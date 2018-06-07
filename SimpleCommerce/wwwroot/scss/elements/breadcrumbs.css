@@ -1,0 +1,134 @@
+/* ----------------------------------------------------------------------
+Breadcrumbs
+-------------------------------------------------------------------------*/
+.breadcrumb {
+  background-color: transparent;
+  font-size: 12px;
+  line-height: 1.3em;
+  margin-bottom: 0;
+  margin-top: 16px;
+  text-align: right; }
+  .breadcrumb ul {
+    display: inline;
+    margin: 0;
+    padding: 0; }
+  .breadcrumb li {
+    display: inline; }
+  .breadcrumb a {
+    color: #888; }
+  .breadcrumb li + li:before {
+    content: "\f105";
+    padding: 0 5px;
+    font-family: FontAwesome; }
+  .breadcrumb.fancy {
+    overflow: hidden;
+    font-size: 12px;
+    line-height: 1.3em;
+    background-color: transparent;
+    padding: 0;
+    margin-bottom: 20px;
+    margin-top: 14px; }
+    .breadcrumb.fancy li {
+      line-height: 32px;
+      margin: 0 2px 0 10px; }
+      .breadcrumb.fancy li + li:before {
+        content: none; }
+  .breadcrumb.radius li + li:before {
+    content: none; }
+  .breadcrumb.fancy li:first-child i {
+    margin-right: -6px; }
+  .breadcrumb.fancy a {
+    background: #eee;
+    padding: .7em 1em;
+    text-decoration: none;
+    position: relative; }
+    .breadcrumb.fancy a:hover {
+      background: #ddd;
+      color: #333; }
+  .breadcrumb.fancy .active a {
+    background: #ddd;
+    color: #333; }
+  .breadcrumb.fancy a::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    margin-top: -1.5em;
+    border-width: 1.5em 0 1.5em 1.1em;
+    border-style: solid;
+    border-color: #eee #eee #eee transparent;
+    left: -1em; }
+  .breadcrumb.fancy li:first-child {
+    margin: 0 2px 0 0; }
+    .breadcrumb.fancy li:first-child a::before {
+      border-width: 0; }
+  .breadcrumb.fancy a:hover::before, .breadcrumb.fancy .active a:before {
+    border-color: #ddd #ddd #ddd transparent; }
+  .breadcrumb.fancy a::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    margin-top: -1.5em;
+    border-top: 1.5em solid transparent;
+    border-bottom: 1.5em solid transparent;
+    border-left: 1em solid #eee;
+    right: -1em; }
+  .breadcrumb.fancy a:hover::after {
+    border-left-color: #ddd; }
+  .breadcrumb.fancy .active a:after {
+    border-left-color: #ddd; }
+  .breadcrumb.radius {
+    background: transparent;
+    overflow: hidden;
+    font-size: 12px; }
+    .breadcrumb.radius li {
+      margin-right: 16px; }
+    .breadcrumb.radius a:hover, .breadcrumb.radius .active a {
+      background: #ddd;
+      color: #333; }
+    .breadcrumb.radius a, .breadcrumb.radius .active a {
+      background: #eee;
+      padding: 4px 8px;
+      text-decoration: none;
+      position: relative; }
+    .breadcrumb.radius a:hover {
+      background: #ddd; }
+    .breadcrumb.radius a::before, .breadcrumb.radius a::after {
+      background: none repeat scroll 0 0 #eee;
+      bottom: 0;
+      content: "";
+      height: 25px;
+      position: absolute;
+      top: 0;
+      -webkit-transform: skew(-8deg);
+      -ms-transform: skew(-8deg);
+      transform: skew(-8deg);
+      width: 10px; }
+    .breadcrumb.radius a::before {
+      left: -.5em;
+      border-radius: 5px 0 0 5px; }
+    .breadcrumb.radius a:hover::before {
+      background: #ddd; }
+    .breadcrumb.radius a::after {
+      right: -.5em;
+      border-radius: 0 5px 5px 0; }
+    .breadcrumb.radius a:hover::after {
+      background: #ddd; }
+    .breadcrumb.radius .active:hover {
+      background: #ddd; }
+    .breadcrumb.radius a:hover::after, .breadcrumb.radius .active a:after {
+      border-left-color: #ddd; }
+
+/*fancy style*/
+/*radius breadcrumb*/
+body.device-sm .breadcrumb, body.device-xs .breadcrumb, body.device-xxs .breadcrumb {
+  text-align: left !important;
+  clear: both; }
+body.device-sm .page-title-right .breadcrumb, body.device-xs .page-title-right .breadcrumb, body.device-xxs .page-title-right .breadcrumb {
+  text-align: right !important;
+  clear: both;
+  padding-top: 14px !important; }
+body.device-sm .page-title-center .breadcrumb, body.device-xs .page-title-center .breadcrumb, body.device-xxs .page-title-center .breadcrumb {
+  text-align: center !important;
+  clear: both; }
+
+/*# sourceMappingURL=breadcrumbs.css.map */

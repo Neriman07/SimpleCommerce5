@@ -1,0 +1,28 @@
+#youtube-background-controls {
+  background: none;
+  border: 2px solid #fff;
+  border-radius: 50%;
+  height: 60px;
+  position: relative;
+  width: 60px; }
+  #youtube-background-controls .fa {
+    font-size: 23px;
+    line-height: 40px; }
+  #youtube-background-controls .fa-pause,
+  #youtube-background-controls .fa-play {
+    -webkit-transition: all 0.3s ease-in-out 0s;
+    transition: all 0.3s ease-in-out 0s;
+    opacity: 0;
+    position: absolute;
+    left: 19px;
+    top: 9px; }
+  #youtube-background-controls .fa-play {
+    left: 22px; }
+  #youtube-background-controls .fa-pause {
+    opacity: 1; }
+  #youtube-background-controls.video-is-playing .fa-play {
+    opacity: 1; }
+  #youtube-background-controls.video-is-playing .fa-pause {
+    opacity: 0; }
+
+/*# sourceMappingURL=yt-player.css.map */

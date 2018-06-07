@@ -1,0 +1,124 @@
+﻿<!-- SLIDER -->
+<section id="slider" class="no-padding">
+    <div id="slider-carousel" class="boxed-slider">
+        @foreach (var item in ViewBag.Slides)
+        {
+            <div style="background-image:url('/Uploads/@item.Photo');" class="owl-bg-img">
+                <div class="container-fullscreen">
+                    <div class="text-middle">
+                        <a style="display:block;width:100%;height:100%;" href="@item.Url">&nbsp;</a>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</section>
+<!-- END: SLIDER -->
+<!-- SHOP PRODUCTS -->
+<section>
+    <div class="container">
+
+        <div class="heading m-b-40">
+            <h4>Öne Çıkan Ürünler</h4>
+        </div>
+
+        <!--Product list-->
+        <div class="shop">
+            <div class="row">
+                @foreach (var item in ViewBag.FeaturedProducts)
+                {
+                    <div class="col-md-3">
+                        <div class="product">
+                            <div class="product-image">
+                                <a href="@Url.Action("Details","Products", new { id = item.Id })">
+                                    <img alt="@item.Name" src="~/Uploads/@item.Photo" style="width:100%;">
+                                </a>
+                                <div class="product-overlay">
+                                    <a href="@Url.Action("Summary","Products", new { id = item.Id })" data-lightbox-type="ajax">Hızlı Görünüm</a>
+                                </div>
+                            </div>
+
+                            <div class="product-description">
+                                <div class="product-category">@item.Category.Name</div>
+                                <div class="product-title">
+                                    <h3><a href="#">@item.Name</a></h3>
+                                </div>
+                                <div class="product-price">
+                                    <ins>₺@item.Price</ins>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</section>
+<!-- END: SHOP PRODUCTS -->
+<!-- DELIVERY INFO -->
+<section class="background-grey p-t-40 p-b-0">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="icon-box effect small clean">
+                    <div class="icon">
+                        <a href="#"><i class="fa fa-gift"></i></a>
+                    </div>
+                    <h3>₺60+ Siparişlerde Ücretsiz Kargo</h3>
+                    <p>Order more than 60$ and you will get free shippining Worldwide. More info.</p>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="icon-box effect small clean">
+                    <div class="icon">
+                        <a href="#"><i class="fa fa-plane"></i></a>
+                    </div>
+                    <h3>Dünya Çapında Teslimat</h3>
+                    <p>We deliver to the following countries: USA, Canada, Europe, Australia</p>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="icon-box effect small clean">
+                    <div class="icon">
+                        <a href="#"><i class="fa fa-history"></i></a>
+                    </div>
+                    <h3>60 Gün Para İade Garantisi!</h3>
+                    <p>Not happy with our product, feel free to return it, we will refund 100% your money!</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- END: DELIVERY INFO -->
+<!-- END: SHOP CATEGORIES -->
+<section>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="hr-title hr-long center"><abbr>Kategoriler </abbr> </div>
+
+            </div>
+        </div>
+
+        <div class="shop-category">
+            <div class="row">
+                @foreach (var item in ViewBag.BrowseCategories)
+                {
+                    <div class="col-md-3">
+                        <div class="shop-category-box">
+                            <a href="@Url.Action("Index","Products", new { categoryId = item.Id })">
+                                <img alt="" src="~/Uploads/@item.Photo" style="width:100%">
+                                <div class="shop-category-box-title text-center">
+                                    <h6>@item.Name</h6><small>@item.PublishedProducts.Count ürün</small>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</section>
+<!-- END: SHOP CATEGORIES -->

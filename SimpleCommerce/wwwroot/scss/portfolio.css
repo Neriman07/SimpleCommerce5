@@ -1,0 +1,255 @@
+/* ----------------------------------------------------------------------
+    Portfolio
+-------------------------------------------------------------------------*/
+.portfolio-items {
+  position: relative;
+  overflow: hidden;
+}
+
+.portfolio-item {
+  position: relative;
+  float: left;
+}
+.portfolio-item,
+.portfolio-item img {
+  display: block;
+  height: auto !important;
+}
+.portfolio-item img {
+  width: 100%;
+}
+.portfolio-item .portfolio-description,
+.portfolio-item .portfolio-date {
+  padding: 15px 0 10px;
+}
+.portfolio-item .portfolio-description {
+  color: #999;
+  float: left;
+  font-size: 11px;
+  text-align: left;
+  width: 70%;
+}
+.portfolio-item .portfolio-description:h4 {
+  line-height: 22px;
+  position: relative;
+  top: -2px;
+  margin-bottom: -2px;
+  font-weight: 600;
+}
+.portfolio-item .portfolio-date {
+  float: right;
+  padding-right: 6px;
+  position: relative;
+  text-align: right;
+  top: -4px;
+  width: 30%;
+}
+.portfolio-item .portfolio-date i,
+.portfolio-item .portfolio-description i {
+  margin-right: 6px;
+}
+.portfolio-item .portfolio-date a,
+.portfolio-item .portfolio-description i {
+  color: #999;
+}
+.portfolio-item .portfolio-details {
+  clear: both;
+  display: block;
+}
+
+.background-grey .portfolio-item {
+  background-color: #fff;
+  box-shadow: 0 4px 2px -2px rgba(0, 0, 0, 0.11);
+}
+.background-grey .portfolio-item .portfolio-description,
+.background-grey .portfolio-item .portfolio-date,
+.background-grey .portfolio-item .portfolio-details {
+  padding: 0 20px;
+}
+.background-grey .portfolio-item .portfolio-description,
+.background-grey .portfolio-item .portfolio-date {
+  padding-top: 20px;
+}
+.background-grey .portfolio-item .portfolio-details {
+  padding-bottom: 20px;
+}
+
+.portfolio [data-isotope-col="1"] .portfolio-item {
+  margin-bottom: 50px !important;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 46px;
+}
+
+body.device-lg .portfolio [data-isotope-col="1"] .portfolio-item .portfolio-image,
+body.device-md .portfolio [data-isotope-col="1"] .portfolio-item .portfolio-image {
+  width: 50%;
+  float: left;
+}
+body.device-lg .portfolio [data-isotope-col="1"] .portfolio-item .portfolio-description,
+body.device-md .portfolio [data-isotope-col="1"] .portfolio-item .portfolio-description {
+  padding-left: 22px;
+  width: 35%;
+}
+body.device-lg .portfolio [data-isotope-col="1"] .portfolio-item .portfolio-description h4,
+body.device-md .portfolio [data-isotope-col="1"] .portfolio-item .portfolio-description h4 {
+  font-size: 26px;
+  margin-bottom: 3px;
+}
+body.device-lg .portfolio [data-isotope-col="1"] .portfolio-item .portfolio-date,
+body.device-md .portfolio [data-isotope-col="1"] .portfolio-item .portfolio-date {
+  padding-right: 22px;
+  width: 15px;
+}
+body.device-lg .portfolio [data-isotope-col="1"] .portfolio-item .portfolio-details,
+body.device-md .portfolio [data-isotope-col="1"] .portfolio-item .portfolio-details {
+  float: left;
+  padding: 0 22px;
+  width: 50%;
+  clear: none;
+}
+body.device-lg .portfolio [data-isotope-col="5"] .portfolio-item .portfolio-description h4,
+body.device-md .portfolio [data-isotope-col="5"] .portfolio-item .portfolio-description h4 {
+  font-size: 14px;
+}
+body.device-lg .portfolio [data-isotope-col="6"] .portfolio-item .portfolio-description h4,
+body.device-md .portfolio [data-isotope-col="6"] .portfolio-item .portfolio-description h4 {
+  font-size: 12px;
+}
+
+.portfolio-filter {
+  float: left;
+  margin-bottom: 20px;
+  padding: 0;
+  width: 80%;
+}
+.portfolio-filter li,
+.portfolio-filter .filter-active-title {
+  border-radius: 4px;
+  cursor: pointer;
+  display: inline-block;
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 18px;
+  padding: 16px;
+  position: relative;
+  -webkit-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+  color: #333;
+}
+.portfolio-filter li .ptf-active,
+.portfolio-filter li :hover {
+  color: #fff !important;
+}
+
+body.device-xs .portfolio-filter li,
+body.device-xss .portfolio-filter li {
+  display: block;
+  width: 50%;
+  float: left;
+  border-width: 0;
+}
+
+.filter-active-title {
+  float: right;
+  padding: 10px 0;
+  position: relative;
+}
+
+body:not(.device-lg):not(.device-md) .filter-active-title {
+  display: none;
+}
+
+.portfolio-filter .portfolio-filter-transparent,
+.portfolio-filter .portfolio-filter-transparent li {
+  color: #fff;
+}
+.portfolio-filter .portfolio-filter-transparent li.ptf-active,
+.portfolio-filter .portfolio-filter-transparent .portfolio-filter li:hover,
+.portfolio-filter .portfolio-filter-transparent .filter-active-title,
+.portfolio-filter .portfolio-filter-transparent li.ptf-active,
+.portfolio-filter .portfolio-filter-transparent li:hover {
+  background-color: transparent !important;
+  border-radius: 0;
+  opacity: 0.6;
+}
+.portfolio-filter .portfolio-filter-classic {
+  margin-bottom: 20px;
+}
+.portfolio-filter .portfolio-filter-classic li,
+.portfolio-filter .portfolio-filter-classic li.ptf-active,
+.portfolio-filter .portfolio-filter-classic li:hover {
+  background: none;
+  color: #333 !important;
+  padding: 6px 0;
+  margin-right: 20px;
+}
+.portfolio-filter .portfolio-filter-classic li:after {
+  background: #333;
+  content: "";
+  height: 2px;
+  left: 0;
+  opacity: 0;
+  position: absolute;
+  top: 100%;
+  transform: translateY(10px);
+  transition: opacity 0.3s ease 0s, transform 0.3s ease 0s;
+  width: 100%;
+}
+.portfolio-filter .portfolio-filter-classic li:hover:after,
+.portfolio-filter .portfolio-filter-classic li :focus:after,
+.portfolio-filter .portfolio-filter-classic li .ptf-active:after {
+  opacity: 1;
+  transform: translateY(0px);
+}
+
+.portfolio-order {
+  float: right;
+  margin-bottom: 20px;
+  padding: 0;
+  width: 20%;
+}
+
+.portfolio-basic-image {
+  margin-bottom: 40px;
+}
+
+.portfolio-client-info ul {
+  border-bottom: 1px solid #E7E7E7;
+  padding-bottom: 20px;
+}
+.portfolio-client-info ul li {
+  overflow: hidden;
+}
+.portfolio-client-info ul li span {
+  float: left;
+  font-size: 13px;
+  font-weight: 700;
+  margin-right: 10px;
+}
+.portfolio-client-info ul li a {
+  color: #333;
+}
+
+.portfolio-client-description {
+  margin-top: 20px;
+}
+
+#isotope,
+.isotope {
+  margin-bottom: -1px;
+  clear: both;
+}
+
+.isotope-item {
+  position: relative;
+  float: left;
+  overflow: hidden;
+}
+.isotope-item,
+.isotope-item img {
+  display: block;
+  height: auto !important;
+}
+.isotope-item img {
+  width: 100%;
+}

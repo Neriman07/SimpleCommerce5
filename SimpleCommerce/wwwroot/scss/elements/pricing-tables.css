@@ -1,0 +1,107 @@
+.pricing-table {
+  padding-top: 50px;
+  margin: 0;
+  padding: 0;
+  cursor: pointer; }
+  .pricing-table .plan {
+    margin-bottom: 60px; }
+    .pricing-table .plan:hover {
+      box-shadow: 0 0 8px rgba(0, 0, 0, 0.1); }
+    .pricing-table .plan .plan-header {
+      position: relative;
+      background: #34495e;
+      padding: 22px 22px;
+      text-align: center; }
+    .pricing-table .plan .plan-header {
+      background-color: #fbfbfb;
+      border-color: #e3e3e3;
+      border-style: solid;
+      border-width: 1px;
+      padding: 22px;
+      position: relative;
+      text-align: center; }
+      .pricing-table .plan .plan-header .plan-price {
+        font-size: 70px;
+        font-weight: 600;
+        position: relative;
+        text-align: center;
+        padding: 20px 0; }
+        .pricing-table .plan .plan-header .plan-price sup {
+          font-size: 24px;
+          position: relative;
+          top: -30px;
+          color: #bdc3c7; }
+        .pricing-table .plan .plan-header .plan-price span {
+          font-size: 16px;
+          color: #bdc3c7; }
+  .pricing-table .plan-header > h4 {
+    margin-bottom: 0; }
+  .pricing-table .plan-list {
+    border-color: #e3e3e3;
+    border-style: solid;
+    border-width: 0 1px 1px;
+    padding: 20px 0 40px; }
+    .pricing-table .plan-list ul {
+      display: table;
+      margin: 0 auto;
+      padding: 0 40px; }
+      .pricing-table .plan-list ul li {
+        list-style: none;
+        border-bottom: 1px solid #EAECEB;
+        font-size: 16px;
+        line-height: 42px; }
+        .pricing-table .plan-list ul li:last-child {
+          border: none; }
+        .pricing-table .plan-list ul li i {
+          margin-right: 12px; }
+        .pricing-table .plan-list ul li span {
+          color: #34495e; }
+  .pricing-table .plan.featured {
+    box-shadow: 0 0 3px rgba(0, 0, 0, 0.1);
+    margin-top: -10px;
+    padding-bottom: 0; }
+    .pricing-table .plan.featured .plan-list {
+      padding: 20px 0 60px; }
+  .pricing-table .plan .plan-featured-item {
+    background-color: #f8f8f8;
+    border: 1px solid #e3e3e3 !important;
+    font-weight: 600;
+    margin-top: 21px;
+    padding: 0 20px; }
+
+.pricing-table .plan .btn,
+.plan .button {
+  margin: 0; }
+
+.pricing-table.colored .plan-header {
+  background-color: #00c0e9;
+  border-color: rgba(0, 0, 0, 0.05);
+  color: #fff; }
+.pricing-table.colored .text-muted {
+  color: #fff; }
+.pricing-table.colored .plan-header h4,
+.pricing-table.colored .plan-header .plan-price sup,
+.pricing-table.colored .plan-header .plan-price span {
+  color: #fff; }
+.pricing-table.transparent .plan-header,
+.pricing-table.transparent .plan-list {
+  background-color: rgba(0, 0, 0, 0.4);
+  border-color: rgba(0, 0, 0, 0.6); }
+.pricing-table.transparent .plan-list ul li {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2); }
+.pricing-table .plan .plan-featured-item {
+  background-color: transparent; }
+
+.section-grey .pricing-table .plan-list {
+  background-color: #f8f8f8; }
+
+section .pricing-table.full-width {
+  padding-left: 30px;
+  padding-right: 30px; }
+
+body.device-lg .pricing-table .col-md-2, body.device-md .pricing-table .col-md-2 {
+  width: 20%; }
+body.device-lg .pricing-table .col-md-2 .plan-list ul li, body.device-md .pricing-table .col-md-2 .plan-list ul li {
+  font-size: 13px; }
+
+/*# sourceMappingURL=pricing-tables.css.map */

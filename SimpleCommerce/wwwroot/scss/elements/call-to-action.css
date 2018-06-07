@@ -1,0 +1,109 @@
+/* ----------------------------------------------------------------------
+    Jumbotron (call to action)
+-------------------------------------------------------------------------*/
+.jumbotron {
+  position: relative;
+  overflow: hidden;
+  padding: 24px 30px 12px; }
+  .jumbotron h3 {
+    font-weight: 700;
+    float: left;
+    margin-bottom: 12px;
+    width: 80%; }
+  .jumbotron p {
+    float: left;
+    margin-bottom: 12px;
+    width: 80%;
+    font-size: 16px;
+    margin-top: 0; }
+  .jumbotron a.button {
+    margin-left: 22px;
+    margin-top: -24px;
+    position: absolute;
+    right: auto;
+    top: 50%;
+    float: right; }
+  .jumbotron.jumbotron-fullwidth {
+    padding: 36px 24px 30px; }
+    .jumbotron.jumbotron-fullwidth .container {
+      padding-left: 15px; }
+  .jumbotron.jumbotron-border {
+    background: #fff;
+    border: 1px solid #eee; }
+  .jumbotron.jumbotron-transparent {
+    background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.2); }
+  .jumbotron.jumbotron-background-image {
+    background-size: cover; }
+  .jumbotron.jumbotron-small {
+    padding: 24px 30px 26px; }
+
+/*jumbotron sizes*/
+body.device-sm .jumbotron a.button, body.device-xs .jumbotron a.button, body.device-xxs .jumbotron a.button {
+  display: block;
+  float: left;
+  margin-left: 0;
+  margin-top: 0;
+  position: relative;
+  clear: both; }
+
+.jumbotron.jumbotron-small a.button, .jumbotron.jumbotron-medium a.button {
+  display: block;
+  float: left;
+  margin-left: 0;
+  margin-top: 0;
+  position: relative;
+  clear: both; }
+.jumbotron.jumbotron-large {
+  padding: 48px 40px; }
+  .jumbotron.jumbotron-large a.button {
+    display: block;
+    float: left;
+    margin-left: 0;
+    margin-top: 0;
+    position: relative;
+    clear: both; }
+  .jumbotron.jumbotron-large p {
+    font-size: 21px; }
+.jumbotron.jumbotron-center {
+  text-align: center; }
+  .jumbotron.jumbotron-center a.button {
+    clear: both;
+    display: inline-table !important;
+    float: none !important;
+    margin-top: 0;
+    position: relative;
+    margin-right: 0;
+    margin-left: 0; }
+  .jumbotron.jumbotron-center h3, .jumbotron.jumbotron-center p {
+    width: 100%;
+    display: block;
+    float: none; }
+.jumbotron.jumbotron-right {
+  text-align: right; }
+  .jumbotron.jumbotron-right a.button {
+    float: left;
+    left: 40px;
+    right: auto; }
+  .jumbotron.jumbotron-right h3, .jumbotron.jumbotron-right p {
+    float: right; }
+
+/*jumbotron positions*/
+body.device-sm .jumbotron.jumbotron-right a.button, body.device-xs .jumbotron.jumbotron-right a.button, body.device-xxs .jumbotron.jumbotron-right a.button {
+  float: right;
+  margin-right: 40px; }
+
+.jumbotron.jumbotron-large.jumbotron-right a.button, .jumbotron.jumbotron-small.jumbotron-right a.button {
+  float: right;
+  margin-right: 40px; }
+
+body.device-sm .jumbotron.jumbotron-right.jumbotron-fullwidth a.button, body.device-xs .jumbotron.jumbotron-right.jumbotron-fullwidth a.button, body.device-xxs .jumbotron.jumbotron-right.jumbotron-fullwidth a.button {
+  float: right;
+  margin-right: 0; }
+
+.jumbotron.jumbotron-fullwidth.jumbotron-right a.button {
+  left: auto;
+  margin-left: -225px;
+  right: auto; }
+
+/*# sourceMappingURL=call-to-action.css.map */

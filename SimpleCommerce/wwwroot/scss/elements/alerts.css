@@ -1,0 +1,6 @@
+.alert > p {
+  color: #fff; }
+.alert.animated {
+  z-index: 999999 !important; }
+
+/*# sourceMappingURL=alerts.css.map */

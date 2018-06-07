@@ -1,0 +1,31 @@
+.pie-animated {
+  opacity: 1; }
+
+.pie-chart {
+  display: inline-block;
+  margin-bottom: 20px;
+  margin-top: 50px;
+  position: relative;
+  text-align: center; }
+  .pie-chart canvas {
+    position: absolute;
+    top: 0;
+    left: 0; }
+  .pie-chart span,
+  .pie-chart i {
+    display: inline-block;
+    font-size: 28px;
+    z-index: 2;
+    font-weight: 600; }
+  .pie-chart i {
+    font-size: 38px; }
+  .pie-chart span.percent:after {
+    content: '%';
+    margin-left: 0.1em;
+    font-size: .8em; }
+  .pie-chart.transparent span,
+  .pie-chart.transparent span.percent,
+  .pie-chart.transparent i {
+    color: #fff; }
+
+/*# sourceMappingURL=pie-charts.css.map */

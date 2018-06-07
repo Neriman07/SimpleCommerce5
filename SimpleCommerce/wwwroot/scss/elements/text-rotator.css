@@ -1,0 +1,7 @@
+.text-rotator > span {
+  display: none; }
+.text-rotator > .animated {
+  display: inline-block;
+  opacity: 1; }
+
+/*# sourceMappingURL=text-rotator.css.map */

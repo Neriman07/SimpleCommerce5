@@ -1,0 +1,249 @@
+﻿@model PagingList<Product>
+<!-- PAGE TITLE -->
+<section id="page-title" class="page-title-parallax page-title-center text-dark" style="background-image:url(/images/parallax/page-title-parallax.jpg);">
+    <div class="container">
+        <div class="page-title col-md-8">
+            <h1>Shop</h1>
+            <span>Shop 3 columns version</span>
+        </div>
+        <div class="breadcrumb col-md-4">
+            <ul>
+                <li>
+                    <a href="#"><i class="fa fa-home"></i></a>
+                </li>
+                <li>
+                    <a href="#">Home</a>
+                </li>
+                <li>
+                    <a href="#">Shop</a>
+                </li>
+                <li class="active">
+                    <a href="#">3 columns version</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</section>
+<!-- END: PAGE TITLE -->
+<!-- SHOP PRODUCTS -->
+<section>
+    <div class="container">
+        <div class="row">
+
+            <!-- Post content-->
+            <div class="post-content float-right col-md-9">
+                <div class="row m-b-20">
+                    <div class="col-md-6 p-t-10 m-b-20">
+                        <h3 class="m-b-20">@(ViewBag.SelectedCategory?.Name ?? "Tüm Ürünler")</h3>
+                        <p>Lorem ipsum dolor sit amet. Accusamus, sit, exercitationem, consequuntur, assumenda iusto eos commodi alias.</p>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="order-select">
+                            <h6>Sort by</h6>
+                            <p>Showing 1&ndash;12 of 25 results</p>
+                            <form id="form1" method="get">
+                                <input type="hidden" name="categoryId"
+                                       value="@(ViewBag.SelectedCategory?.Id)" />
+                                <select name="order" onchange="$('#form1').submit();">
+                                    @if (Context.Request.Query["order"] == "date-asc")
+                                    {
+                                        <option value="date-asc" selected="selected">Tarihe Göre Artan</option>
+                                    }
+                                    else
+                                    {
+                                        <option value="date-asc">Tarihe Göre Artan</option>
+                                    }
+                                    @if (Context.Request.Query["order"] == "date-desc")
+                                    {
+                                        <option value="date-desc" selected="selected">Tarihe Göre Azalan</option>
+                                    }
+                                    else
+                                    {
+                                        <option value="date-desc">Tarihe Göre Azalan</option>
+                                    }
+                                    @if (Context.Request.Query["order"] == "price-asc")
+                                    {
+                                        <option value="price-asc" selected="selected">Fiyata Göre Artan</option>
+                                    }
+                                    else
+                                    {
+                                        <option value="price-asc">Fiyata Göre Artan</option>
+                                    }
+                                    @if (Context.Request.Query["order"] == "price-desc")
+                                    {
+                                        <option value="price-desc" selected="selected">Fiyata Göre Azalan</option>
+                                    }
+                                    else
+                                    {
+                                        <option value="price-desc">Fiyata Göre Azalan</option>
+                                    }
+                                </select>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="order-select">
+                            <h6>Sort by Price</h6>
+                            <p>From 0 - 190$</p>
+                            <form method="get">
+                                <select>
+                                    <option selected="selected" value="">0$ - 50$</option>
+                                    <option value="">51$ - 90$</option>
+                                    <option value="">91$ - 120$</option>
+                                    <option value="">121$ - 200$</option>
+                                </select>
+                            </form>
+                        </div>
+                    </div>
+
+
+                </div>
+                <!--Product list-->
+                <div class="shop">
+                    <div class="row">
+                        @foreach (var item in Model)
+                        {
+                            <div class="col-md-4">
+                                <div class="product">
+                                    <div class="product-image">
+                                        <a href="@Url.Action("Details","Products", new { id = item.Id })">
+                                            <img alt="@item.Name" src="~/Uploads/@item.Photo">
+                                        </a>
+                                        <div class="product-overlay">
+                                            <a href="@Url.Action("Summary","Products", new { id = item.Id })" data-lightbox-type="ajax">Hızlı Görünüm</a>
+                                        </div>
+                                    </div>
+
+                                    <div class="product-description">
+                                        <div class="product-category">@item.Category.Name</div>
+                                        <div class="product-title">
+                                            <h3><a href="@Url.Action("Details","Products",new { id = item.Id })">@item.Name</a></h3>
+                                        </div>
+                                        <div class="product-price">
+                                            <ins>₺@item.Price</ins>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                    <nav class="text-center">
+                        <vc:pager paging-list="@Model" />
+                    </nav>
+                </div>
+                <!--END: Product list-->
+
+            </div>
+            <!-- END: Post content-->
+            <!-- Sidebar-->
+            <div class="sidebar col-md-3">
+                <!--widget newsletter-->
+                <div class="widget clearfix widget-archive">
+                    <h4 class="widget-title">Ürün Kategorileri</h4>
+                    <ul class="list list-lines">
+                        @foreach (var item in (IEnumerable<Category>)ViewBag.ProductCategories)
+                        {
+                            <li>
+                                <a href="@Url.Action("Index","Products",new { categoryId = item.Id })">@item.Name</a> <span class="count">(@item.PublishedProducts.Count)</span>
+                            </li>
+                        }
+                    </ul>
+                </div>
+                <div class="widget clearfix widget-shop">
+                    <h4 class="widget-title">Son Ürünler</h4>
+                    @foreach (var item in ViewBag.LatestProducts)
+                    {
+                        <div class="product">
+                            <div class="product-image">
+                                <a href="@Url.Action("Details","Products", new { id = item.Id })">
+                                    <img src="~/Uploads/@item.Photo" alt="@item.Name">
+                                </a>
+                            </div>
+                            <div class="product-description">
+                                <div class="product-category">@item.Category.Name</div>
+                                <div class="product-title">
+                                    <h3><a href="@Url.Action("Details","Products", new { id = item.Id })">@item.Name</a></h3>
+                                </div>
+                                <div class="product-price">
+                                    <ins>₺@item.Price</ins>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+                <div class="widget clearfix widget-tags">
+                    <h4 class="widget-title">Tags</h4>
+                    <div class="tags">
+                        <a href="#">Design</a>
+                        <a href="#">Portfolio</a>
+                        <a href="#">Digital</a>
+                        <a href="#">Branding</a>
+                        <a href="#">HTML</a>
+                        <a href="#">Clean</a>
+                        <a href="#">Peace</a>
+                        <a href="#">Love</a>
+                        <a href="#">CSS3</a>
+                        <a href="#">jQuery</a>
+                    </div>
+                </div>
+
+
+                <div class="widget clearfix widget-newsletter">
+                    <form class="form-inline" method="get" action="#">
+                        <h4 class="widget-title">Subscribe for Latest Offers</h4>
+                        <small>Subscribe to our Newsletter to get Sales Offers &amp; Coupon Codes etc.</small>
+                        <div class="input-group">
+
+                            <input type="email" placeholder="Enter your Email" class="form-control required email" name="widget-subscribe-form-email" aria-required="true">
+                            <span class="input-group-btn">
+                                <button type="submit" class="btn btn-primary"><i class="fa fa-paper-plane"></i></button>
+                            </span>
+                        </div>
+                    </form>
+                </div>
+
+
+            </div>
+            <!-- END: Sidebar-->
+
+        </div>
+    </div>
+</section>
+<!-- END: SHOP PRODUCTS -->
+<!-- DELIVERY INFO -->
+<section class="background-grey p-t-40 p-b-0">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="icon-box effect small clean">
+                    <div class="icon">
+                        <a href="#"><i class="fa fa-gift"></i></a>
+                    </div>
+                    <h3>Free shipping on orders $60+</h3>
+                    <p>Order more than 60$ and you will get free shippining Worldwide. More info.</p>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="icon-box effect small clean">
+                    <div class="icon">
+                        <a href="#"><i class="fa fa-plane"></i></a>
+                    </div>
+                    <h3>Worldwide delivery</h3>
+                    <p>We deliver to the following countries: USA, Canada, Europe, Australia</p>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="icon-box effect small clean">
+                    <div class="icon">
+                        <a href="#"><i class="fa fa-history"></i></a>
+                    </div>
+                    <h3>60 days money back guranty!</h3>
+                    <p>Not happy with our product, feel free to return it, we will refund 100% your money!</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- END: DELIVERY INFO -->

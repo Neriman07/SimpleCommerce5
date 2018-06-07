@@ -1,0 +1,27 @@
+.counter {
+  margin-bottom: 20px; }
+  .counter span {
+    font-size: 50px;
+    line-height: 40px; }
+  .counter.small > span {
+    font-size: 32px !important; }
+  .counter.medium > span {
+    font-size: 50px !important; }
+  .counter.large > span {
+    font-size: 62px !important; }
+
+.icon-box.fancy > .counter span {
+  margin: 0 12px 10px 56px; }
+.icon-box.fancy.medium > .counter span {
+  margin: 0 12px 10px 80px; }
+.icon-box.effect:not(.center) > .counter span {
+  margin: 0 12px 10px 82px; }
+.icon-box.effect.large:not(.center) > .counter span {
+  margin: 0 12px 10px 107px; }
+.icon-box.effect.medium:not(.center) > .counter span {
+  margin: 0 12px 10px 82px; }
+.icon-box.effect.small:not(.center) > .counter span {
+  margin: 0 12px 10px 58px;
+  font-size: 32px !important; }
+
+/*# sourceMappingURL=counters.css.map */

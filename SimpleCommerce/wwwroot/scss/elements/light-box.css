@@ -1,0 +1,26 @@
+.lightbox-open {
+  position: relative;
+  overflow: hidden !important;
+}
+
+.mfp-ajax-holder .mfp-content {
+  background: #F8F8F8;
+  max-width: 1000px;
+}
+.mfp-ajax-holder .ajax-quick-view {
+  padding: 20px 30px 35px;
+}
+.mfp-ajax-holder .ajax-quick-view .quick-view-title {
+  border-bottom: 1px solid #dddddd;
+  margin-bottom: 30px;
+  position: relative;
+}
+.mfp-ajax-holder .ajax-quick-view .quick-view-title h2 {
+  font-weight: 600;
+}
+
+.mfp-ajax-holder .mfp-close {
+  background: none repeat scroll 0 0 #fff !important;
+  margin-right: -45px;
+  margin-top: 0;
+}

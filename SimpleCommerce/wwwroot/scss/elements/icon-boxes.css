@@ -1,0 +1,322 @@
+.icon {
+  margin-bottom: 16px;
+}
+
+.icon-box {
+  margin-bottom: 50px;
+}
+.icon-box .icon {
+  height: 64px;
+  position: absolute;
+  width: 64px;
+}
+.icon-box .icon i {
+  font-size: 28px;
+  text-align: center;
+  line-height: 66px;
+  border-radius: 50%;
+}
+.icon-box .icon a,
+.icon-box .icon i {
+  width: 100%;
+  height: 100%;
+  color: #333;
+}
+.icon-box h3 {
+  margin: 0 12px 10px 83px;
+}
+.icon-box p {
+  margin: 0 0 20px 83px;
+}
+
+.icon-box-description > p {
+  margin-bottom: 20px;
+}
+
+.icon-box.effect .icon i {
+  z-index: 1;
+}
+.icon-box.effect .icon i:after {
+  pointer-events: none;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  content: '';
+  box-sizing: content-box;
+}
+.icon-box .icon i {
+  -webkit-transition: background-color 0.2s, color 0.2s;
+  transition: background-color 0.2s, color 0.2s;
+}
+.icon-box .icon i:after {
+  top: -4px;
+  left: -4px;
+  padding: 4px;
+  box-shadow: 0 0 0 3px #333;
+  -webkit-transition: -webkit-transform 0.2s, opacity 0.2s;
+  -webkit-transform: scale(0.8);
+  -moz-transform: scale(0.8);
+  -ms-transform: scale(0.8);
+  -webkit-transition: -webkit-transform 0.2s, opacity 0.2s;
+  transition: transform 0.2s, opacity 0.2s;
+  -webkit-transform: scale(0.8);
+  -ms-transform: scale(0.8);
+  transform: scale(0.8);
+  opacity: 0;
+}
+.icon-box.effect.dark .icon i:after {
+  box-shadow: 0 0 0 3px #1ABC9C;
+}
+.icon-box.effect.dark .icon i:hover, .icon-box.effect.dark:hover .icon i {
+  background-color: #1ABC9C;
+}
+.icon-box.effect .icon i:hover:after, .icon-box.effect:hover .icon i:after {
+  -webkit-transform: scale(1);
+  -ms-transform: scale(1);
+  transform: scale(1);
+  opacity: 1;
+}
+
+.image-box .image-box-content p i.fa.fa-play {
+  padding-left: 3px;
+}
+
+.icon-box.small .icon {
+  height: 46px;
+  width: 46px;
+}
+.icon-box.small .icon i {
+  font-size: 20px;
+  line-height: 47px;
+}
+.icon-box.small > h3 {
+  font-size: 18px;
+  margin: 0 12px 4px 60px;
+}
+.icon-box.small > p {
+  margin: 0 0 20px 60px;
+  line-height: 1.6;
+  font-size: 14px;
+}
+.icon-box.medium > h3,
+.icon-box.medium > h4 {
+  margin: 0 12px 10px 84px;
+}
+.icon-box.medium > p {
+  margin: 0 0 20px 84px;
+}
+.icon-box.large .icon {
+  height: 86px;
+  width: 86px;
+}
+.icon-box.large .icon i {
+  font-size: 38px;
+  line-height: 87px;
+}
+.icon-box.large > h3 {
+  margin: 0 12px 10px 110px;
+  font-size: 24px;
+}
+.icon-box.large p {
+  margin: 0 0 20px 110px;
+}
+.icon-box.icon-box-right {
+  padding: 0;
+  text-align: right;
+}
+.icon-box.icon-box-right > h3 {
+  margin: 0px 84px 0px 10px;
+}
+.icon-box.icon-box-right.medium > p {
+  margin: 20px 84px 0px 10px;
+}
+.icon-box.icon-box-right .icon {
+  right: 0;
+}
+.icon-box.icon-box-right p {
+  font-size: 14px;
+  margin-top: 15px;
+}
+.icon-box.center {
+  padding: 0;
+  text-align: center;
+}
+.icon-box.center h3 {
+  margin: 0 12px 10px 0px;
+}
+.icon-box.center p {
+  margin: 0 0 20px 0px;
+}
+.icon-box.center .icon {
+  margin: 0 auto 22px;
+  position: relative;
+}
+.icon-box.center p {
+  font-size: 14px;
+  margin-top: 15px;
+}
+.icon-box.center.small .icon {
+  clear: both !important;
+  position: relative !important;
+}
+.icon-box.border .icon {
+  border: 3px solid #333;
+  text-align: center;
+  border-radius: 50%;
+  background-color: transparent;
+}
+.icon-box.border .icon i {
+  line-height: 60px;
+}
+.icon-box.border:hover > .icon i {
+  line-height: 66px;
+}
+.icon-box.border:hover > .icon {
+  border: 0px;
+}
+.icon-box.border .icon i {
+  background-color: transparent !important;
+  color: #333;
+}
+.icon-box.border.small .icon {
+  height: 46px;
+  position: absolute;
+  top: 5px;
+  width: 46px;
+}
+.icon-box.border.small .icon i {
+  font-size: 20px;
+  line-height: 42px;
+}
+.icon-box.border.small:hover > .icon i {
+  line-height: 49px;
+}
+.icon-box.border.large .icon i {
+  line-height: 81px;
+}
+.icon-box.border.large:hover > .icon i {
+  line-height: 86px;
+}
+.icon-box.square.large:hover > .icon i {
+  line-height: 86px;
+}
+.icon-box.square .icon, .icon-box.square.effect .icon i:after,
+.icon-box.square .icon i {
+  border-radius: 0;
+}
+.icon-box.square:hover > .icon i {
+  line-height: 66px;
+}
+.icon-box.square.border .icon i {
+  line-height: 59px;
+}
+.icon-box.square.border:hover > .icon i {
+  line-height: 64px;
+}
+.icon-box.square.border.small .icon i {
+  line-height: 41px;
+}
+.icon-box.square.border.small:hover > .icon i {
+  line-height: 47px;
+}
+.icon-box.square.border.large .icon i {
+  line-height: 78px;
+}
+.icon-box.square.border:large:hover > .icon i {
+  line-height: 84px;
+}
+.icon-box.square.small:hover > .icon i {
+  line-height: 64px;
+}
+.icon-box.light .icon i:after {
+  box-shadow: 0 0 0 3px #e5e5e5;
+}
+.icon-box.light .icon i {
+  background-color: #e5e5e5;
+}
+.icon-box.light .icon i {
+  color: #808080;
+}
+.icon-box.light.border .icon {
+  border: 3px solid #e5e5e5;
+}
+.icon-box.light.border.large .icon i {
+  line-height: 87px;
+}
+.icon-box.light.border.large:hover > .icon i {
+  line-height: 88px;
+}
+.icon-box.fancy .icon i {
+  background-color: transparent;
+  color: #222;
+  font-size: 110px;
+  opacity: 0.09;
+  -webkit-transition: all ease 0.5s;
+  transition: all ease 0.5s;
+  border-radius: 0px;
+}
+.icon-box.fancy.small > .icon i {
+  font-size: 68px;
+}
+.icon-box.fancy.large .icon i {
+  font-size: 120px;
+}
+.icon-box.fancy.center .icon {
+  width: auto;
+  margin-bottom: 30px;
+}
+.icon-box.effect.fancy .icon i:after {
+  box-shadow: 0 0 0 0px transparent;
+}
+.icon-box.effect.fancy:hover > .icon i {
+  font-size: 110px;
+}
+.icon-box.effect.fancy.small:hover > .icon i {
+  font-size: 76px;
+}
+.icon-box.clean .icon i {
+  background-color: none;
+  color: #333;
+  font-size: 50px;
+}
+.icon-box.clean.small .icon i {
+  font-size: 36px;
+}
+.icon-box.effect.clean .icon i:after {
+  box-shadow: 0 0 0 0px transparent;
+}
+.icon-box.process {
+  border: 1px solid #888;
+  margin-top: 45px;
+  padding: 0 30px 10px;
+  border-radius: 4px;
+}
+.icon-box.process.effect .icon i:hover:after, .icon-box.process.effect:hover .icon i::after {
+  opacity: 0;
+  border: 0px;
+}
+.icon-box.process .icon {
+  margin-top: 10px;
+}
+.icon-box.process.small .icon {
+  margin-top: 10px;
+}
+.icon-box.box-type {
+  background: #fafafa;
+  border: 1px solid #ececec;
+  border-radius: 4px;
+  padding: 20px;
+}
+.icon-box.box-type .icon {
+  margin-top: 20px;
+}
+
+.text-box {
+  margin-bottom: 32px;
+}
+.text-box > h4,
+.text-box > h3 {
+  margin-bottom: 10px;
+  font-weight: 600;
+}

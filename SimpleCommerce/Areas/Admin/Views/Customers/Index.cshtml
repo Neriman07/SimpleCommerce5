@@ -1,0 +1,191 @@
+﻿@model IEnumerable<SimpleCommerce.Models.Customer>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h2>Müşteriler</h2>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table id="tblRecords" class="table">
+    <thead>
+        <tr>
+                <th class="text-nowrap all">
+                    @Html.DisplayNameFor(model => model.BillingFirstName)
+                </th>
+                <th class="text-nowrap all">
+                    @Html.DisplayNameFor(model => model.BillingLastName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.BillingIdentityNumber)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.BillingCompanyName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.BillingCountry)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.BillingCity)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.BillingCounty)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.BillingDistrict)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.BillingStreet)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.BillingAddress)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.BillingZipCode)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.BillingEmail)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.BillingPhone)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.ShippingFirstName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.ShippingLastName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.ShippingIdentityNumber)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.ShippingCompanyName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.ShippingCountry)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.ShippingCity)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.ShippingCounty)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.ShippingDistrict)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.ShippingStreet)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.ShippingAddress)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.ShippingZipCode)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.ShippingEmail)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.ShippingPhone)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.UserName)
+                </th>
+            <th class="text-nowrap all">Eylemler</th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.BillingFirstName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BillingLastName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BillingIdentityNumber)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BillingCompanyName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BillingCountry)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BillingCity)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BillingCounty)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BillingDistrict)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BillingStreet)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BillingAddress)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BillingZipCode)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BillingEmail)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BillingPhone)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ShippingFirstName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ShippingLastName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ShippingIdentityNumber)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ShippingCompanyName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ShippingCountry)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ShippingCity)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ShippingCounty)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ShippingDistrict)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ShippingStreet)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ShippingAddress)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ShippingZipCode)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ShippingEmail)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ShippingPhone)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UserName)
+            </td>
+            <td class="text-nowrap">
+                <a asp-action="Edit" asp-route-id="@item.Id">Düzenle</a> |
+                <a asp-action="Details" asp-route-id="@item.Id">Detaylar</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Sil</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

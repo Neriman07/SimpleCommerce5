@@ -1,0 +1,615 @@
+﻿@model Product
+@{
+    ViewData["Title"] = "Details";
+}
+
+<!-- PAGE TITLE -->
+<section id="page-title" class="page-title-parallax page-title-center text-dark" style="background-image:url(images/parallax/page-title-parallax.jpg);">
+    <div class="container">
+        <div class="page-title col-md-8">
+            <h1>ÜRÜN</h1>
+            <span>Ürün detayları</span>
+        </div>
+        <div class="breadcrumb col-md-4">
+            <ul>
+                <li>
+                    <a href="#"><i class="fa fa-home"></i></a>
+                </li>
+                <li>
+                    <a href="#">Anasayfa</a>
+                </li>
+                <li>
+                    <a href="#">Alışveriş</a>
+                </li>
+                <li class="active">
+                    <a href="#">Ürün Detayı</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</section>
+<!-- END: PAGE TITLE -->
+<!-- SHOP PRODUCT PAGE -->
+<section id="product-page" class="product-page p-b-0">
+    <div class="container">
+        <div class="row">
+            <!-- Post content -->
+            <div class="post-content product col-md-9">
+                <div class="row">
+                    <div class="col-md-5">
+                        <div class="product-image">
+                            <div class="carousel" data-carousel-col="1" data-lightbox-type="gallery">
+                                <a href="#" title="@Model.Name">
+                                    <img alt="@Model.Name" src="~/Uploads/@Model.Photo">
+                                </a>
+
+                                <a href="#" title="@Model.Name">
+                                    <img alt="@Model.Name" src="~/Uploads/@Model.Photo">
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="col-md-7">
+                        <div class="product-description">
+                            <div class="product-category">@Model.Category.Name</div>
+                            <div class="product-title">
+                                <h3><a href="#">@Model.Name</a></h3>
+                            </div>
+                            <div class="product-price">
+                                <ins>₺@Model.Price</ins>
+                            </div>
+
+                            <div class="seperator m-b-10"></div>
+                            <p>@Model.Description</p>
+                            
+                            <div class="seperator m-t-20 m-b-10"></div>
+
+                        </div>
+                        
+
+                        <div class="m-t-10">
+                            <h6>Adet seçin</h6>
+                            <div class="cart-product-quantity">
+                                <div class="quantity m-l-5">
+                                    <input type="button" class="minus" value="-">
+                                    <input type="text" class="qty" value="1">
+                                    <input type="button" class="plus" value="+">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="m-t-20">
+                            <button type="button" class="btn btn-primary btn-lg" onclick="AddToCart(@Model.Id)"><i class="fa fa-shopping-cart"></i> Sepete Ekle</button>
+                        </div>
+
+                    </div>
+
+
+                </div>
+                <div class="row m-t-40">
+
+                    <div class="col-md-6">
+                        <h4>Reviews (3)</h4>
+                        <div id="comments" class="comments">
+
+
+
+                            <div class="comment">
+                                <a href="#" class="pull-left">
+                                    <img alt="" src="images/team/1.jpg" class="avatar">
+                                </a>
+                                <div class="media-body">
+                                    <div class="product-rate">
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star-half-o"></i>
+                                    </div>
+                                    <h4 class="media-heading">Alea Grande</h4>
+
+                                    <p>Maecenas nec iaculis turpis, egeiquam eget malesuada enim, eu interdum elit. Sed sagittis ornare velit a congue.</p>
+
+                                </div>
+                            </div>
+
+                            <div class="comment">
+                                <a class="pull-left" href="#">
+                                    <img class="avatar" src="images/team/3.jpg" alt="">
+                                </a>
+                                <div class="media-body">
+                                    <div class="product-rate">
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star-half-o"></i>
+                                    </div>
+                                    <h4 class="media-heading">Ariol Smith</h4>
+
+                                    <p>Ut ulneque. Aliquam eget malesuada enim, eu interdum elit. Sed sagittis ornare velit a congue.</p>
+
+                                </div>
+                            </div>
+                            <div class="comment">
+                                <a href="#" class="pull-left">
+                                    <img alt="" src="images/team/2.jpg" class="avatar">
+                                </a>
+                                <div class="media-body">
+                                    <div class="product-rate">
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star-half-o"></i>
+                                    </div>
+                                    <h4 class="media-heading">Juna Smith</h4>
+
+                                    <p>Nullam nisl dui, congue in mi non,a enim, eu interdum elit. Sed sagittis ornare velit a congue.</p>
+
+                                </div>
+
+
+
+
+                            </div>
+
+
+
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <h4> Additional Information</h4>
+                        <div class="accordion toggle fancy radius clean">
+                            <div class="ac-item ac-active">
+                                <h5 class="ac-title"><i class="fa fa-rocket"></i>Suscipit laboriosam</h5>
+                                <div class="ac-content">Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.</div>
+                            </div>
+                            <div class="ac-item">
+                                <h5 class="ac-title"><i class="fa fa-heart"></i>Aliquam voluptatem</h5>
+                                <div style="display: none;" class="ac-content">Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.</div>
+                            </div>
+                            <div class="ac-item">
+                                <h5 class="ac-title"><i class="fa fa-shopping-cart"></i>Labore et dolore</h5>
+                                <div style="display: none;" class="ac-content">Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.</div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <!-- Post content -->
+            <!-- Sidebar-->
+            <div class="sidebar col-md-3">
+                <!--widget newsletter-->
+                <div class="widget clearfix widget-archive">
+                    <h4 class="widget-title">Product categories</h4>
+                    <ul class="list list-lines">
+                        <li>
+                            <a href="#">Bags</a> <span class="count">(6)</span>
+                        </li>
+                        <li>
+                            <a href="#">Jeans</a> <span class="count">(8)</span>
+                        </li>
+                        <li>
+                            <a href="#">Shoes</a> <span class="count">(7)</span>
+                        </li>
+                        <li>
+                            <a href="#">Sweaters</a> <span class="count">(7)</span>
+                        </li>
+                        <li>
+                            <a href="#">T-Shirts</a> <span class="count">(9)</span>
+                        </li>
+                        <li>
+                            <a href="#">Tops</a> <span class="count">(10)</span>
+                        </li>
+                        <li>
+                            <a href="#">Women</a> <span class="count">(25)</span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="widget clearfix widget-shop">
+                    <h4 class="widget-title">Latest Products</h4>
+                    <div class="product">
+                        <div class="product-image">
+                            <a href="#">
+                                <img src="images/shop/products/10.jpg" alt="Shop product image!">
+                            </a>
+                        </div>
+                        <div class="product-description">
+                            <div class="product-category">Women</div>
+                            <div class="product-title">
+                                <h3><a href="#">Bolt Sweatshirt</a></h3>
+                            </div>
+                            <div class="product-price">
+                                <del>$30.00</del><ins>$15.00</ins>
+                            </div>
+                            <div class="product-rate">
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star-half-o"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="product">
+                        <div class="product-image">
+                            <a href="#">
+                                <img src="images/shop/products/6.jpg" alt="Shop product image!">
+                            </a>
+                        </div>
+
+                        <div class="product-description">
+                            <div class="product-category">Women</div>
+                            <div class="product-title">
+                                <h3><a href="#">Consume Tshirt</a></h3>
+                            </div>
+                            <div class="product-price">
+                                <ins>$39.00</ins>
+                            </div>
+                            <div class="product-rate">
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star-half-o"></i>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="product">
+                        <div class="product-image">
+                            <a href="#">
+                                <img src="images/shop/products/7.jpg" alt="Shop product image!">
+                            </a>
+                        </div>
+
+                        <div class="product-description">
+                            <div class="product-category">Man</div>
+                            <div class="product-title">
+                                <h3><a href="#">Logo Tshirt</a></h3>
+                            </div>
+                            <div class="product-price">
+                                <ins>$39.00</ins>
+                            </div>
+                            <div class="product-rate">
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star-half-o"></i>
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+                <div class="widget clearfix widget-tags">
+                    <h4 class="widget-title">Tags</h4>
+                    <div class="tags">
+                        <a href="#">Design</a>
+                        <a href="#">Portfolio</a>
+                        <a href="#">Digital</a>
+                        <a href="#">Branding</a>
+                        <a href="#">HTML</a>
+                        <a href="#">Clean</a>
+                        <a href="#">Peace</a>
+                        <a href="#">Love</a>
+                        <a href="#">CSS3</a>
+                        <a href="#">jQuery</a>
+                    </div>
+                </div>
+                <div class="widget clearfix widget-newsletter">
+                    <form class="form-inline" method="get" action="#">
+                        <h4 class="widget-title">Subscribe for Latest Offers</h4>
+                        <small>Subscribe to our Newsletter to get Sales Offers &amp; Coupon Codes etc.</small>
+                        <div class="input-group">
+
+                            <input type="email" placeholder="Enter your Email" class="form-control required email" name="widget-subscribe-form-email" aria-required="true">
+                            <span class="input-group-btn">
+                                <button type="submit" class="btn btn-primary"><i class="fa fa-paper-plane"></i></button>
+                            </span>
+                        </div>
+                    </form>
+                </div>
+
+
+            </div>
+            <!-- END: Sidebar-->
+        </div>
+    </div>
+</section>
+<!-- END: SHOP PRODUCT PAGE -->
+<!-- SHOP WIDGET PRODUTCS -->
+<section class="p-t-0">
+    <div class="container">
+        <div class="heading-fancy heading-line text-center">
+            <h4>Related Products you may be interested!</h4>
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+
+
+                <div class="widget-shop">
+                    <div class="product">
+                        <div class="product-image">
+                            <a href="#">
+                                <img src="images/shop/products/10.jpg" alt="Shop product image!">
+                            </a>
+                        </div>
+                        <div class="product-description">
+                            <div class="product-category">Women</div>
+                            <div class="product-title">
+                                <h3><a href="#">Bolt Sweatshirt</a></h3>
+                            </div>
+                            <div class="product-price">
+                                <del>$30.00</del><ins>$15.00</ins>
+                            </div>
+                            <div class="product-rate">
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star-half-o"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="product">
+                        <div class="product-image">
+                            <a href="#">
+                                <img src="images/shop/products/6.jpg" alt="Shop product image!">
+                            </a>
+                        </div>
+
+                        <div class="product-description">
+                            <div class="product-category">Women</div>
+                            <div class="product-title">
+                                <h3><a href="#">Consume Tshirt</a></h3>
+                            </div>
+                            <div class="product-price">
+                                <ins>$39.00</ins>
+                            </div>
+                            <div class="product-rate">
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star-half-o"></i>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="product">
+                        <div class="product-image">
+                            <a href="#">
+                                <img src="images/shop/products/7.jpg" alt="Shop product image!">
+                            </a>
+                        </div>
+
+                        <div class="product-description">
+                            <div class="product-category">Man</div>
+                            <div class="product-title">
+                                <h3><a href="#">Logo Tshirt</a></h3>
+                            </div>
+                            <div class="product-price">
+                                <ins>$39.00</ins>
+                            </div>
+                            <div class="product-rate">
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star-half-o"></i>
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+
+
+                <div class="widget-shop">
+                    <div class="product">
+                        <div class="product-image">
+                            <a href="#">
+                                <img src="images/shop/products/11.jpg" alt="Shop product image!">
+                            </a>
+                        </div>
+
+                        <div class="product-description">
+                            <div class="product-category">Man</div>
+                            <div class="product-title">
+                                <h3><a href="#">Logo Tshirt</a></h3>
+                            </div>
+                            <div class="product-price">
+                                <ins>$39.00</ins>
+                            </div>
+                            <div class="product-rate">
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star-half-o"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="product">
+                        <div class="product-image">
+                            <a href="#">
+                                <img src="images/shop/products/9.jpg" alt="Shop product image!">
+                            </a>
+                        </div>
+
+                        <div class="product-description">
+                            <div class="product-category">Women</div>
+                            <div class="product-title">
+                                <h3><a href="#">Consume Tshirt</a></h3>
+                            </div>
+                            <div class="product-price">
+                                <ins>$39.00</ins>
+                            </div>
+                            <div class="product-rate">
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star-half-o"></i>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="product">
+                        <div class="product-image">
+                            <a href="#">
+                                <img src="images/shop/products/3.jpg" alt="Shop product image!">
+                            </a>
+                        </div>
+
+                        <div class="product-description">
+                            <div class="product-category">Man</div>
+                            <div class="product-title">
+                                <h3><a href="#">Logo Tshirt</a></h3>
+                            </div>
+                            <div class="product-price">
+                                <ins>$39.00</ins>
+                            </div>
+                            <div class="product-rate">
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star-half-o"></i>
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+
+
+                <div class="widget-shop">
+                    <div class="product">
+                        <div class="product-image">
+                            <a href="#">
+                                <img src="images/shop/products/1.jpg" alt="Shop product image!">
+                            </a>
+                        </div>
+                        <div class="product-description">
+                            <div class="product-category">Women</div>
+                            <div class="product-title">
+                                <h3><a href="#">Bolt Sweatshirt</a></h3>
+                            </div>
+                            <div class="product-price">
+                                <del>$30.00</del><ins>$15.00</ins>
+                            </div>
+                            <div class="product-rate">
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star-half-o"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="product">
+                        <div class="product-image">
+                            <a href="#">
+                                <img src="images/shop/products/2.jpg" alt="Shop product image!">
+                            </a>
+                        </div>
+
+                        <div class="product-description">
+                            <div class="product-category">Women</div>
+                            <div class="product-title">
+                                <h3><a href="#">Consume Tshirt</a></h3>
+                            </div>
+                            <div class="product-price">
+                                <ins>$39.00</ins>
+                            </div>
+                            <div class="product-rate">
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star-half-o"></i>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="product">
+                        <div class="product-image">
+                            <a href="#">
+                                <img src="images/shop/products/5.jpg" alt="Shop product image!">
+                            </a>
+                        </div>
+
+                        <div class="product-description">
+                            <div class="product-category">Man</div>
+                            <div class="product-title">
+                                <h3><a href="#">Logo Tshirt</a></h3>
+                            </div>
+                            <div class="product-price">
+                                <ins>$39.00</ins>
+                            </div>
+                            <div class="product-rate">
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star-half-o"></i>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+<!-- END: SHOP WIDGET PRODUTCS -->
+<!-- DELIVERY INFO -->
+<section class="background-grey p-t-40 p-b-0">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="icon-box effect small clean">
+                    <div class="icon">
+                        <a href="#"><i class="fa fa-gift"></i></a>
+                    </div>
+                    <h3>Free shipping on orders $60+</h3>
+                    <p>Order more than 60$ and you will get free shippining Worldwide. More info.</p>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="icon-box effect small clean">
+                    <div class="icon">
+                        <a href="#"><i class="fa fa-plane"></i></a>
+                    </div>
+                    <h3>Worldwide delivery</h3>
+                    <p>We deliver to the following countries: USA, Canada, Europe, Australia</p>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="icon-box effect small clean">
+                    <div class="icon">
+                        <a href="#"><i class="fa fa-history"></i></a>
+                    </div>
+                    <h3>60 days money back guranty!</h3>
+                    <p>Not happy with our product, feel free to return it, we will refund 100% your money!</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- END: DELIVERY INFO -->

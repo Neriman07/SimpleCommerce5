@@ -1,0 +1,23 @@
+.box-fancy > .container {
+  padding: 0 30px; }
+.box-fancy [class*="col-"] {
+  padding: 5% !important; }
+.box-fancy.fancy-box-over {
+  top: -100px; }
+
+body.device-xxs .box-fancy [class*="col-"] {
+  padding: 10% !important; }
+
+.over-slider-top {
+  top: -100px; }
+
+.site-map i {
+  margin-right: 8px; }
+.site-map ul li {
+  padding-bottom: 2px; }
+
+.animated.infinite {
+  animation-duration: 3s;
+  animation-fill-mode: both; }
+
+/*# sourceMappingURL=elements-extras.css.map */
