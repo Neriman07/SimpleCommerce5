@@ -28,11 +28,14 @@
     </div>
 </section>
 <!-- END: PAGE TITLE -->
-<!-- SHOP CHECKOUT -->
-<section id="shop-checkout">
-    <div class="container">
-        <div class="shop-cart">
-            <form method="post" class="sep-top-md">
+<!-- SHOP CHECKOUT -->   
+<form method="post" class="sep-top-md">
+    <input asp-for="CartId" type="hidden" />
+    <input asp-for="CustomerId" type="hidden" />
+    <section id="shop-checkout">
+        <div class="container">
+            <div class="shop-cart">
+
                 <div class="row">
                     <div class="col-md-6 no-padding">
                         <div class="col-md-12">
@@ -40,7 +43,7 @@
                         </div>
                         <div class="col-md-12 form-group">
                             <label class="sr-only">Ülke</label>
-                            <select asp-for="Customer.BillingCountry" class="fullwidth" asp-items="ViewBag.BillingCountries" onchange="BillingCountryChange(this)">
+                            <select asp-for="Customer.BillingCountry" class="fullwidth" asp-items="ViewBag.BillingCountries" onchange="BillingCountryChange(this);">
                                 <option value="">Ülke seçiniz</option>
                             </select>
                         </div>
@@ -62,7 +65,7 @@
                         </div>
                         <div class="col-md-6 form-group">
                             <label class="sr-only">Şehir </label>
-                            <select asp-for="Customer.BillingCity" class="form-control input-lg" placeholder="Şehir"> <option value="">Şehir Seçiniz</option></select>
+                            <select asp-for="Customer.BillingCity" class="form-control input-lg" placeholder="Şehir" onchange="BillingCityChange(this);"> <option value="">Şehir Seçiniz</option></select>
                         </div>
 
                         <div class="col-md-6 form-group">
@@ -104,7 +107,7 @@
                                         <div class="row">
                                             <div class="col-md-12 form-group">
                                                 <label class="sr-only">Ülke</label>
-                                                <select asp-for="Customer.ShippingCountry" class="fullwidth" asp-items="ViewBag.ShippingCountries">
+                                                <select asp-for="Customer.ShippingCountry" class="fullwidth" asp-items="ViewBag.ShippingCountries" onchange="ShippingCountryChange(this);">
                                                     <option value="">Ülke seçiniz</option>
                                                 </select>
                                             </div>
@@ -126,7 +129,7 @@
                                             </div>
                                             <div class="col-md-6 form-group">
                                                 <label class="sr-only">Şehir </label>
-                                                <select asp-for="Customer.ShippingCity" class="form-control input-lg" placeholder="Şehir"> <option value="">Şehir Seçiniz</option></select>
+                                                <select asp-for="Customer.ShippingCity" class="form-control input-lg" placeholder="Şehir" onchange="ShippingCityChange(this);"> <option value="">Şehir Seçiniz</option></select>
                                             </div>
 
 
@@ -161,159 +164,148 @@
                                             </div>
                                         </div>
 
-                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-md-12 no-padding">
-                            <textarea asp-for="ShippingNotes" class="form-control input-lg" placeholder="Sipariş Notları" rows="7"></textarea>
+                    </div>
+                    <div class="col-md-12 no-padding">
+                        <textarea asp-for="ShippingNotes" class="form-control input-lg" placeholder="Sipariş Notları" rows="7"></textarea>
+                    </div>
+                </div>
+
+
+
+                <div class="seperator">
+                    <i class="fa fa-credit-card"></i>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <h4 class="upper">Siparişiniz</h4>
+                        <div class="table table-condensed table-striped table-responsive table table-bordered table-responsive">
+                            <table class="table m-b-0">
+                                <thead>
+                                    <tr>
+                                        <th class="cart-product-thumbnail">Ürün</th>
+                                        <th class="cart-product-name">Açıklama</th>
+
+                                        <th class="cart-product-subtotal">Toplam</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var item in Model.Cart.CartItems)
+                                    {
+                                        <tr>
+
+                                            <td class="cart-product-thumbnail">
+                                                <div class="cart-product-thumbnail-name">@item.Product.Name</div>
+                                            </td>
+                                            <td class="cart-product-description">
+                                                <p>
+                                                    @item.Product.Description
+                                                    <span>(@item.Quantity Adet)</span>
+                                                </p>
+                                            </td>
+
+
+                                            <td class="cart-product-subtotal">
+                                                <span class="amount">@item.TotalPrice</span>
+                                            </td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
                         </div>
                     </div>
-                
-
-
-
-            </form>
-
-            <div class="seperator">
-                <i class="fa fa-credit-card"></i>
-            </div>
-
-
-            <div class="row">
-                <div class="col-md-6">
-                    <h4 class="upper">Siparişiniz</h4>
-                    <div class="table table-condensed table-striped table-responsive table table-bordered table-responsive">
-                        <table class="table m-b-0">
-                            <thead>
-                                <tr>
-
-                                    <th class="cart-product-thumbnail">Ürün</th>
-                                    <th class="cart-product-name">Açıklama</th>
-
-
-                                    <th class="cart-product-subtotal">Toplam</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                               @foreach (var item in Model.Cart.CartItems)
-                               {
-                                <tr>
-
-
-                                    <td class="cart-product-thumbnail">
-
-                                        <div class="cart-product-thumbnail-name">@item.Product.Name</div>
-                                    </td>
-
-                                    <td class="cart-product-description">
-
-                                        <p>
-                                            @item.Product.Description
-                                            <span>(@item.Quantity Adet)</span>
-                                        </p>
-                                    </td>
-
-
-
-
-
-                                    <td class="cart-product-subtotal">
-                                        <span class="amount">@item.TotalPrice</span>
-                                    </td>
-                                </tr>
-                               }
-                            </tbody>
-
-                        </table>
-
+                    <div class="col-md-6">
+                        <div class="table-responsive">
+                            <h4>Sipariş Toplamı</h4>
+                            <table class="table">
+                                <tbody>
+                                    <tr>
+                                        <td class="cart-product-name">
+                                            <strong>Sipariş Altoplamı</strong>
+                                        </td>
+                                        <td class="cart-product-name text-right">
+                                            <span class="amount">₺@Model.Cart.TotalPrice</span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="cart-product-name">
+                                            <strong>Kargo</strong>
+                                        </td>
+                                        <td class="cart-product-name  text-right">
+                                            <span class="amount">Ücretsiz Kargo</span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="cart-product-name">
+                                            <strong>KDV</strong>
+                                        </td>
+                                        <td class="cart-product-name  text-right">
+                                            <span class="amount">₺@string.Format("{0:#,###.##}", Model.Cart.TotalPrice * 0.18M)</span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="cart-product-name">
+                                            <strong>Toplam (KDV Dahil)</strong>
+                                        </td>
+                                        <td class="cart-product-name text-right">
+                                            <span class="amount color lead"><strong>₺@string.Format("{0:#,###.##}", Model.Cart.TotalPrice * 1.18M)</strong></span>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="table-responsive">
-                        <h4>Sipariş Toplamı</h4>
-
-                        <table class="table">
+                    <div class="col-md-6">
+                        <h4 class="upper">Ödeme Yöntemi</h4>
+                        <table class="payment-method table table-bordered table-condensed table-responsive">
                             <tbody>
                                 <tr>
-                                    <td class="cart-product-name">
-                                        <strong>Sipariş Altoplamı</strong>
-                                    </td>
-
-                                    <td class="cart-product-name text-right">
-                                        <span class="amount">₺@Model.Cart.TotalPrice</span>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="cart-product-name">
-                                        <strong>Kargo</strong>
-                                    </td>
-
-                                    <td class="cart-product-name  text-right">
-                                        <span class="amount">Ücretsiz Kargo</span>
+                                    <td>
+                                        <div class="radio">
+                                            <label>
+                                                <input type="radio" name="optionsRadios" value="" onclick="$('#bankTransfer').show('fast');"><b class="dark">Havale/EFT</b>
+                                                <br>
+                                            </label>
+                                        </div>
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td class="cart-product-name">
-                                        <strong>KDV</strong>
-                                    </td>
-
-                                    <td class="cart-product-name  text-right">
-                                        <span class="amount">₺@string.Format("{0:#,###.##}",Model.Cart.TotalPrice*0.18M)</span>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="cart-product-name">
-                                        <strong>Toplam (KDV Dahil)</strong>
-                                    </td>
-
-                                    <td class="cart-product-name text-right">
-                                        <span class="amount color lead"><strong>₺@string.Format("{0:#,###.##}", Model.Cart.TotalPrice * 1.18M)</strong></span>
+                                    <td>
+                                        <div class="radio">
+                                            <label>
+                                                <input type="radio" name="optionsRadios" value="" onclick="$('#bankTransfer').hide('fast');"><b class="dark">Kredi Kartı</b>
+                                            </label>
+                                        </div>
                                     </td>
                                 </tr>
                             </tbody>
-
                         </table>
-
+                        <button type="submit" class="button color button-3d rounded icon-left float-right" href="#" style="color:black !important;">ÖDEMEYİ YAP VE SİPARİŞİ TAMAMLA</button>
                     </div>
-                </div>
-                <div class="col-md-6">
-                    <h4 class="upper">Ödeme Yöntemi</h4>
-
-                    <table class="payment-method table table-bordered table-condensed table-responsive">
-                        <tbody>
-                            <tr>
-                                <td>
-                                    <div class="radio">
-                                        <label>
-                                            <input type="radio" name="optionsRadios" value=""><b class="dark">Havale/EFT</b>
-                                            <br>
-                                        </label>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <div class="radio">
-                                        <label>
-                                            <input type="radio" name="optionsRadios" value=""><b class="dark">Kredi Kartı</b>
-                                        </label>
-                                    </div>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                    <a class="button color button-3d rounded icon-left float-right" href="#"  style="color:black !important;"><span>ÖDEMEYİ YAP VE SİPARİŞİ TAMAMLA</span></a>
+                    <div class="col-md-6">
+                        <div id="bankTransfer" style="display:none">
+                            <h4>
+                                Havale/ EFT ödemesi Hesap Numaranız:
+                            </h4>
+                            <p>
+                                <strong> Garanti Bankası</strong>
+                                TR6000 2000 3000 4000 5000
+                            </p>
+                            <p>
+                                Havale/EFT işleminde açıklama bilgisi #@string.Format("{0:000000}", Model.Id) Sipariş numarası yazınız.
+                            </p>
+                        </div>
+                    </div>
                 </div>
 
             </div>
-
-
-
         </div>
-    </div>
-</section>
+    </section>
+</form>
 <!-- END: SHOP CHECKOUT -->
 <!-- DELIVERY INFO -->
 <section class="background-grey p-t-40 p-b-0">
@@ -328,7 +320,6 @@
                     <p>Order more than 60$ and you will get free shippining Worldwide. More info.</p>
                 </div>
             </div>
-
             <div class="col-md-4">
                 <div class="icon-box effect small clean">
                     <div class="icon">
@@ -338,7 +329,6 @@
                     <p>We deliver to the following countries: USA, Canada, Europe, Australia</p>
                 </div>
             </div>
-
             <div class="col-md-4">
                 <div class="icon-box effect small clean">
                     <div class="icon">
@@ -352,7 +342,7 @@
     </div>
 </section>
 <!-- END: DELIVERY INFO -->
-@section scripts{ 
+@section scripts{
     <script>
         //$.get metodu jequry nin ajax metodudur , sayfa yenilenmeden veri getirmeyi sağlar(ajax bu işe yarar)
         //  bu metot ile Shop/GetCitites actionu çağırdık
@@ -360,9 +350,57 @@
         // $.get metodundan sonuç döndüğünden gelen şehirler json formatında gelecektir.
         function BillingCountryChange(elm)
         {
+            $.get('@Url.Action("GetCities","Shop")', { countryCode: $(elm).val() }, function (data) {
+                var $select = $("#Customer_BillingCity");
+                $select.empty();
+                $select.append('<option value="">Şehir Seçiniz</option>');
 
-            $.get('@Url.Action("GetCities","Shop")', { countryCode: $(elm).val() }, function (data) { alert(JSON.stringify(data)); });
+                $.each(data, function (key, value) {
+                    $select.append('<option value="' + value.code + '">' + value.name + '</option>');
+                });
 
+            });
+        }
+         function BillingCityChange(elm)
+        {
+
+            $.get('@Url.Action("GetCounties","Shop")', { cityCode: $(elm).val() }, function (data) {
+                var $select = $("#Customer_BillingCounty");
+                $select.empty();
+                $select.append('<option value="">ilçe Seçiniz</option>');
+
+                $.each(data, function (key, value) {
+                    $select.append('<option value="' + value.code + '">' + value.name + '</option>');
+                });
+
+            });
+         }
+         function ShippingCountryChange(elm)
+        {
+            $.get('@Url.Action("GetCities","Shop")', { countryCode: $(elm).val() }, function (data) {
+                var $select = $("#Customer_ShippingCity");
+                $select.empty();
+                $select.append('<option value="">Şehir Seçiniz</option>');
+
+                $.each(data, function (key, value) {
+                    $select.append('<option value="' + value.code + '">' + value.name + '</option>');
+                });
+
+            });
+        }
+         function ShippingCityChange(elm)
+        {
+
+            $.get('@Url.Action("GetCounties","Shop")', { cityCode: $(elm).val() }, function (data) {
+                var $select = $("#Customer_ShippingCounty");
+                $select.empty();
+                $select.append('<option value="">ilçe Seçiniz</option>');
+
+                $.each(data, function (key, value) {
+                    $select.append('<option value="' + value.code + '">' + value.name + '</option>');
+                });
+
+            });
         }
     </script>
 }
