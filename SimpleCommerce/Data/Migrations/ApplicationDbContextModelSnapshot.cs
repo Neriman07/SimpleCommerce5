@@ -144,6 +144,8 @@ namespace SimpleCommerce.Data.Migrations
 
                     b.Property<bool>("EmailConfirmed");
 
+                    b.Property<DateTime?>("LastLoginTime");
+
                     b.Property<bool>("LockoutEnabled");
 
                     b.Property<DateTimeOffset?>("LockoutEnd");
@@ -159,6 +161,8 @@ namespace SimpleCommerce.Data.Migrations
                     b.Property<string>("PhoneNumber");
 
                     b.Property<bool>("PhoneNumberConfirmed");
+
+                    b.Property<DateTime?>("RagistrationDate");
 
                     b.Property<string>("SecurityStamp");
 
@@ -334,6 +338,9 @@ namespace SimpleCommerce.Data.Migrations
                     b.Property<int>("OrderStatus");
 
                     b.Property<string>("Owner")
+                        .HasMaxLength(200);
+
+                    b.Property<string>("PaymentMethod")
                         .HasMaxLength(200);
 
                     b.Property<string>("ShippingNotes")

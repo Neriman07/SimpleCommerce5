@@ -77,31 +77,38 @@
 
 
                 <div class="topbar-dropdown hidden-xs float-right">
-                    <div class="title"><i class="fa fa-user"></i><a href="/#">Login</a></div>
+                    @if (string.IsNullOrEmpty(User.Identity.Name))
+                    {
+                        <div class="title"><i class="fa fa-user"></i><a href="/#">Giriş</a></div>
 
 
-                    <div class="topbar-form">
-                        <form>
-                            <div class="form-group">
-                                <label class="sr-only">Username or Email</label>
-                                <input type="text" placeholder="Username or Email" class="form-control">
-
-                            </div>
-                            <div class="form-group">
-                                <label class="sr-only">Password</label>
-                                <input type="password" placeholder="Password" class="form-control">
-                            </div>
-                            <div class="form-inline form-group">
-                                <div class="checkbox">
-                                    <label>
-                                        <input type="checkbox">
-                                        <small> Remember me</small>
-                                    </label>
+                        <div class="topbar-form">
+                            <form asp-action="Login" asp-controller="Account" asp-route-returnurl="@Context.Request.Path" method="post">
+                                <div class="form-group">
+                                    <label class="sr-only">E-posta</label>
+                                    <input type="text" name="Email" placeholder="Email" class="form-control">
                                 </div>
-                                <button type="button" class="btn btn-primary btn-block">Login</button>
-                            </div>
-                        </form>
+                                <div class="form-group">
+                                    <label class="sr-only">Parola</label>
+                                    <input type="password" name="Password" placeholder="Parola" class="form-control">
+                                </div>
+                                <div class="form-inline form-group">
+                                    <div class="checkbox">
+                                        <label>
+                                            <input type="checkbox">
+                                            <small>Beni Hatırla</small>
+                                        </label>
+                                    </div>
+                                    <button type="submit" class="btn btn-primary btn-block">Login</button>
+                                </div>
+                            </form>
+                        </div>
+                    }
+                    else
+                    {
+                    <div class="title"><i class="fa fa-user"></i><a href="@Url.Action("Index","Manage")">@User.Identity.Name</a>(<a href="Javascript:void(0);" onclick="document.getElementById('logoutForm').submit();">Çıkış</a>)<form asp-action="Logout" asp-controller="Account" method="post" id="logoutForm"></form>
                     </div>
+                    }
                 </div>
 
 

@@ -32,278 +32,284 @@
 <form method="post" class="sep-top-md">
     <input asp-for="CartId" type="hidden" />
     <input asp-for="CustomerId" type="hidden" />
+    <input asp-for="Id" type="hidden" />
     <section id="shop-checkout">
         <div class="container">
             <div class="shop-cart">
+                @if (!string.IsNullOrEmpty(ViewBag.ErrorCode))
+                {
+                    <div class="alert alert-danger">
+                        Bir hata oluştu, lütfen daha sonra tekrar deneyiniz.
+                        </div>
+                }
+                        <div class="row">
+                            <div class="col-md-6 no-padding">
+                                <div class="col-md-12">
+                                    <h4 class="upper">Fatura Adresi</h4>
+                                </div>
+                                <div class="col-md-12 form-group">
+                                    <label class="sr-only">Ülke</label>
+                                    <select asp-for="Customer.BillingCountry" class="fullwidth" asp-items="ViewBag.BillingCountries" onchange="BillingCountryChange(this);">
+                                        <option value="">Ülke seçiniz</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-6 form-group">
+                                    <label class="sr-only"> Adı</label>
+                                    <input asp-for="Customer.BillingFirstName" class="form-control input-lg" placeholder=" Adı" />
+                                </div>
+                                <div class="col-md-6 form-group">
+                                    <label class="sr-only">Soyadı</label>
+                                    <input asp-for="Customer.BillingLastName" class="form-control input-lg" placeholder="Soyadı" />
+                                </div>
+                                <div class="col-md-12 form-group">
+                                    <label class="sr-only">Tc Kimlik No/vergi No</label>
+                                    <input type="text" asp-for="Customer.BillingIdentityNumber" class="form-control input-lg" placeholder="Tc Kimlik No/vergi No" value="">
+                                </div>
+                                <div class="col-md-12 form-group">
+                                    <label class="sr-only">Fatura Şirket Adı</label>
+                                    <input type="text" asp-for="Customer.BillingCompanyName" class="form-control input-lg" placeholder="Fatura Şirket Adı" value="">
+                                </div>
+                                <div class="col-md-6 form-group">
+                                    <label class="sr-only">Şehir </label>
+                                    <select asp-for="Customer.BillingCity" class="form-control input-lg" placeholder="Şehir" onchange="BillingCityChange(this);"> <option value="">Şehir Seçiniz</option></select>
+                                </div>
 
-                <div class="row">
-                    <div class="col-md-6 no-padding">
-                        <div class="col-md-12">
-                            <h4 class="upper">Fatura Adresi</h4>
-                        </div>
-                        <div class="col-md-12 form-group">
-                            <label class="sr-only">Ülke</label>
-                            <select asp-for="Customer.BillingCountry" class="fullwidth" asp-items="ViewBag.BillingCountries" onchange="BillingCountryChange(this);">
-                                <option value="">Ülke seçiniz</option>
-                            </select>
-                        </div>
-                        <div class="col-md-6 form-group">
-                            <label class="sr-only"> Adı</label>
-                            <input asp-for="Customer.BillingFirstName" class="form-control input-lg" placeholder=" Adı" />
-                        </div>
-                        <div class="col-md-6 form-group">
-                            <label class="sr-only">Soyadı</label>
-                            <input asp-for="Customer.BillingLastName" class="form-control input-lg" placeholder="Soyadı" />
-                        </div>
-                        <div class="col-md-12 form-group">
-                            <label class="sr-only">Tc Kimlik No/vergi No</label>
-                            <input type="text" asp-for="Customer.BillingIdentityNumber" class="form-control input-lg" placeholder="Tc Kimlik No/vergi No" value="">
-                        </div>
-                        <div class="col-md-12 form-group">
-                            <label class="sr-only">Fatura Şirket Adı</label>
-                            <input type="text" asp-for="Customer.BillingCompanyName" class="form-control input-lg" placeholder="Fatura Şirket Adı" value="">
-                        </div>
-                        <div class="col-md-6 form-group">
-                            <label class="sr-only">Şehir </label>
-                            <select asp-for="Customer.BillingCity" class="form-control input-lg" placeholder="Şehir" onchange="BillingCityChange(this);"> <option value="">Şehir Seçiniz</option></select>
-                        </div>
+                                <div class="col-md-6 form-group">
+                                    <label class="sr-only">ilçe</label>
+                                    <select asp-for="Customer.BillingCounty" class="form-control input-lg" placeholder="İlçe Seçiniz"> <option value="">İlçe Seçiniz</option></select>
+                                </div>
+                                <div class="col-md-6 form-group">
+                                    <label class="sr-only">Mahalle/Semt</label>
+                                    <input asp-for="Customer.BillingDistrict" class="form-control input-lg" placeholder="Mahlle/semt" />
+                                </div>
+                                <div class="col-md-6 form-group">
+                                    <label class="sr-only">Cadde/Sokak</label>
+                                    <input asp-for="Customer.BillingStreet" class="form-control input-lg" placeholder="Cadde/Sokak" />
+                                </div>
+                                <div class="col-md-6 form-group">
+                                    <label class="sr-only">Apartment, suite,kapı no, vb.</label>
+                                    <input asp-for="Customer.BillingAddress" class="form-control input-lg" placeholder="Apartment, suite,kapı no,vb" value="">
+                                </div>
 
-                        <div class="col-md-6 form-group">
-                            <label class="sr-only">ilçe</label>
-                            <select asp-for="Customer.BillingCounty" class="form-control input-lg" placeholder="İlçe Seçiniz"> <option value="">İlçe Seçiniz</option></select>
-                        </div>
-                        <div class="col-md-6 form-group">
-                            <label class="sr-only">Mahalle/Semt</label>
-                            <input asp-for="Customer.BillingDistrict" class="form-control input-lg" placeholder="Mahlle/semt" />
-                        </div>
-                        <div class="col-md-6 form-group">
-                            <label class="sr-only">Cadde/Sokak</label>
-                            <input asp-for="Customer.BillingStreet" class="form-control input-lg" placeholder="Cadde/Sokak" />
-                        </div>
-                        <div class="col-md-6 form-group">
-                            <label class="sr-only">Apartment, suite,kapı no, vb.</label>
-                            <input asp-for="Customer.BillingAddress" class="form-control input-lg" placeholder="Apartment, suite,kapı no,vb" value="">
-                        </div>
-
-                        <div class="col-md-6 form-group">
-                            <label class="sr-only">Posta kodu</label>
-                            <input asp-for="Customer.BillingZipCode" class="form-control input-lg" placeholder="Posta Kodu" />
-                        </div>
-                        <div class="col-md-6 form-group">
-                            <label class="sr-only">E-posta</label>
-                            <input asp-for="Customer.BillingEmail" class="form-control input-lg" placeholder="E-posta" />
-                        </div>
-                        <div class="col-md-6 form-group">
-                            <label class="sr-only">Telefon</label>
-                            <input asp-for="Customer.BillingPhone" class="form-control input-lg" placeholder="Phone" />
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <h4 class="upper"><a href="#collapseFour" data-toggle="collapse" class="collapsed" aria-expanded="false"> Teslimat Adresi <i class="fa fa-arrow-circle-o-down"></i></a></h4>
-                        <div class="col-md-12 no-padding">
-                            <div style="height: 0px;" aria-expanded="false" id="collapseFour" class="panel-collapse row collapse">
-                                <div class="panel-body">
-                                    <div class="sep-top-xs">
-                                        <div class="row">
-                                            <div class="col-md-12 form-group">
-                                                <label class="sr-only">Ülke</label>
-                                                <select asp-for="Customer.ShippingCountry" class="fullwidth" asp-items="ViewBag.ShippingCountries" onchange="ShippingCountryChange(this);">
-                                                    <option value="">Ülke seçiniz</option>
-                                                </select>
-                                            </div>
-                                            <div class="col-md-6 form-group">
-                                                <label class="sr-only"> Adı</label>
-                                                <input asp-for="Customer.ShippingFirstName" class="form-control input-lg" placeholder="Adı" />
-                                            </div>
-                                            <div class="col-md-6 form-group">
-                                                <label class="sr-only">Soyadı</label>
-                                                <input asp-for="Customer.ShippingLastName" class="form-control input-lg" placeholder="Soyadı" />
-                                            </div>
-                                            <div class="col-md-12 form-group">
-                                                <label class="sr-only">Tc Kimlik No/vergi No</label>
-                                                <input type="text" asp-for="Customer.ShippingIdentityNumber" class="form-control input-lg" placeholder="Tc Kimlik No/vergi No" value="">
-                                            </div>
-                                            <div class="col-md-12 form-group">
-                                                <label class="sr-only">Firma Adı</label>
-                                                <input type="text" asp-for="Customer.ShippingCompanyName" class="form-control input-lg" placeholder="Firma Adı" value="">
-                                            </div>
-                                            <div class="col-md-6 form-group">
-                                                <label class="sr-only">Şehir </label>
-                                                <select asp-for="Customer.ShippingCity" class="form-control input-lg" placeholder="Şehir" onchange="ShippingCityChange(this);"> <option value="">Şehir Seçiniz</option></select>
-                                            </div>
+                                <div class="col-md-6 form-group">
+                                    <label class="sr-only">Posta kodu</label>
+                                    <input asp-for="Customer.BillingZipCode" class="form-control input-lg" placeholder="Posta Kodu" />
+                                </div>
+                                <div class="col-md-6 form-group">
+                                    <label class="sr-only">E-posta</label>
+                                    <input asp-for="Customer.BillingEmail" class="form-control input-lg" placeholder="E-posta" />
+                                </div>
+                                <div class="col-md-6 form-group">
+                                    <label class="sr-only">Telefon</label>
+                                    <input asp-for="Customer.BillingPhone" class="form-control input-lg" placeholder="Phone" />
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <h4 class="upper"><a href="#collapseFour" data-toggle="collapse" class="collapsed" aria-expanded="false"> Teslimat Adresi <i class="fa fa-arrow-circle-o-down"></i></a></h4>
+                                <div class="col-md-12 no-padding">
+                                    <div style="height: 0px;" aria-expanded="false" id="collapseFour" class="panel-collapse row collapse">
+                                        <div class="panel-body">
+                                            <div class="sep-top-xs">
+                                                <div class="row">
+                                                    <div class="col-md-12 form-group">
+                                                        <label class="sr-only">Ülke</label>
+                                                        <select asp-for="Customer.ShippingCountry" class="fullwidth" asp-items="ViewBag.ShippingCountries" onchange="ShippingCountryChange(this);">
+                                                            <option value="">Ülke seçiniz</option>
+                                                        </select>
+                                                    </div>
+                                                    <div class="col-md-6 form-group">
+                                                        <label class="sr-only"> Adı</label>
+                                                        <input asp-for="Customer.ShippingFirstName" class="form-control input-lg" placeholder="Adı" />
+                                                    </div>
+                                                    <div class="col-md-6 form-group">
+                                                        <label class="sr-only">Soyadı</label>
+                                                        <input asp-for="Customer.ShippingLastName" class="form-control input-lg" placeholder="Soyadı" />
+                                                    </div>
+                                                    <div class="col-md-12 form-group">
+                                                        <label class="sr-only">Tc Kimlik No/vergi No</label>
+                                                        <input type="text" asp-for="Customer.ShippingIdentityNumber" class="form-control input-lg" placeholder="Tc Kimlik No/vergi No" value="">
+                                                    </div>
+                                                    <div class="col-md-12 form-group">
+                                                        <label class="sr-only">Firma Adı</label>
+                                                        <input type="text" asp-for="Customer.ShippingCompanyName" class="form-control input-lg" placeholder="Firma Adı" value="">
+                                                    </div>
+                                                    <div class="col-md-6 form-group">
+                                                        <label class="sr-only">Şehir </label>
+                                                        <select asp-for="Customer.ShippingCity" class="form-control input-lg" placeholder="Şehir" onchange="ShippingCityChange(this);"> <option value="">Şehir Seçiniz</option></select>
+                                                    </div>
 
 
-                                            <div class="col-md-6 form-group">
-                                                <label class="sr-only">ilçe</label>
-                                                <select asp-for="Customer.ShippingCounty" class="form-control input-lg" placeholder="İlçe Seçiniz"> <option value="">İlçe Seçiniz</option></select>
-                                            </div>
-                                            <div class="col-md-6 form-group">
-                                                <label class="sr-only">Mahalle/Semt</label>
-                                                <input asp-for="Customer.ShippingDistrict" class="form-control input-lg" placeholder="Mahlle/semt" />
-                                            </div>
-                                            <div class="col-md-6 form-group">
-                                                <label class="sr-only">Cadde/Sokak</label>
-                                                <input asp-for="Customer.ShippingStreet" class="form-control input-lg" placeholder="Cadde/Sokak" />
-                                            </div>
-                                            <div class="col-md-6 form-group">
-                                                <label class="sr-only">Apartment, suite,kapı no, vb.</label>
-                                                <input asp-for="Customer.ShippingAddress" class="form-control input-lg" placeholder="Apartment, suite,kapı no,vb" value="">
-                                            </div>
+                                                    <div class="col-md-6 form-group">
+                                                        <label class="sr-only">ilçe</label>
+                                                        <select asp-for="Customer.ShippingCounty" class="form-control input-lg" placeholder="İlçe Seçiniz"> <option value="">İlçe Seçiniz</option></select>
+                                                    </div>
+                                                    <div class="col-md-6 form-group">
+                                                        <label class="sr-only">Mahalle/Semt</label>
+                                                        <input asp-for="Customer.ShippingDistrict" class="form-control input-lg" placeholder="Mahlle/semt" />
+                                                    </div>
+                                                    <div class="col-md-6 form-group">
+                                                        <label class="sr-only">Cadde/Sokak</label>
+                                                        <input asp-for="Customer.ShippingStreet" class="form-control input-lg" placeholder="Cadde/Sokak" />
+                                                    </div>
+                                                    <div class="col-md-6 form-group">
+                                                        <label class="sr-only">Apartment, suite,kapı no, vb.</label>
+                                                        <input asp-for="Customer.ShippingAddress" class="form-control input-lg" placeholder="Apartment, suite,kapı no,vb" value="">
+                                                    </div>
 
-                                            <div class="col-md-6 form-group">
-                                                <label class="sr-only">Posta kodu</label>
-                                                <input asp-for="Customer.ShippingZipCode" class="form-control input-lg" placeholder="Posta Kodu" />
-                                            </div>
-                                            <div class="col-md-6 form-group">
-                                                <label class="sr-only">E-posta</label>
-                                                <input asp-for="Customer.ShippingEmail" class="form-control input-lg" placeholder="E-posta" />
-                                            </div>
-                                            <div class="col-md-6 form-group">
-                                                <label class="sr-only">Telefon</label>
-                                                <input asp-for="Customer.ShippingPhone" class="form-control input-lg" placeholder="Telefon" />
+                                                    <div class="col-md-6 form-group">
+                                                        <label class="sr-only">Posta kodu</label>
+                                                        <input asp-for="Customer.ShippingZipCode" class="form-control input-lg" placeholder="Posta Kodu" />
+                                                    </div>
+                                                    <div class="col-md-6 form-group">
+                                                        <label class="sr-only">E-posta</label>
+                                                        <input asp-for="Customer.ShippingEmail" class="form-control input-lg" placeholder="E-posta" />
+                                                    </div>
+                                                    <div class="col-md-6 form-group">
+                                                        <label class="sr-only">Telefon</label>
+                                                        <input asp-for="Customer.ShippingPhone" class="form-control input-lg" placeholder="Telefon" />
+                                                    </div>
+                                                </div>
+
                                             </div>
                                         </div>
-
                                     </div>
                                 </div>
                             </div>
+                            <div class="col-md-12 no-padding">
+                                <textarea asp-for="ShippingNotes" class="form-control input-lg" placeholder="Sipariş Notları" rows="7"></textarea>
+                            </div>
                         </div>
-                    </div>
-                    <div class="col-md-12 no-padding">
-                        <textarea asp-for="ShippingNotes" class="form-control input-lg" placeholder="Sipariş Notları" rows="7"></textarea>
-                    </div>
-                </div>
 
 
 
-                <div class="seperator">
-                    <i class="fa fa-credit-card"></i>
-                </div>
+                        <div class="seperator">
+                            <i class="fa fa-credit-card"></i>
+                        </div>
 
-                <div class="row">
-                    <div class="col-md-6">
-                        <h4 class="upper">Siparişiniz</h4>
-                        <div class="table table-condensed table-striped table-responsive table table-bordered table-responsive">
-                            <table class="table m-b-0">
-                                <thead>
-                                    <tr>
-                                        <th class="cart-product-thumbnail">Ürün</th>
-                                        <th class="cart-product-name">Açıklama</th>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <h4 class="upper">Siparişiniz</h4>
+                                <div class="table table-condensed table-striped table-responsive table table-bordered table-responsive">
+                                    <table class="table m-b-0">
+                                        <thead>
+                                            <tr>
+                                                <th class="cart-product-thumbnail">Ürün</th>
+                                                <th class="cart-product-name">Açıklama</th>
 
-                                        <th class="cart-product-subtotal">Toplam</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    @foreach (var item in Model.Cart.CartItems)
-                                    {
+                                                <th class="cart-product-subtotal">Toplam</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @foreach (var item in Model.Cart.CartItems)
+                                            {
+                                                <tr>
+
+                                                    <td class="cart-product-thumbnail">
+                                                        <div class="cart-product-thumbnail-name">@item.Product.Name</div>
+                                                    </td>
+                                                    <td class="cart-product-description">
+                                                        <p>
+                                                            @item.Product.Description
+                                                            <span>(@item.Quantity Adet)</span>
+                                                        </p>
+                                                    </td>
+
+
+                                                    <td class="cart-product-subtotal">
+                                                        <span class="amount">@item.TotalPrice</span>
+                                                    </td>
+                                                </tr>
+                                            }
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="table-responsive">
+                                    <h4>Sipariş Toplamı</h4>
+                                    <table class="table">
+                                        <tbody>
+                                            <tr>
+                                                <td class="cart-product-name">
+                                                    <strong>Sipariş Altoplamı</strong>
+                                                </td>
+                                                <td class="cart-product-name text-right">
+                                                    <span class="amount">₺@Model.Cart.TotalPrice</span>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="cart-product-name">
+                                                    <strong>Kargo</strong>
+                                                </td>
+                                                <td class="cart-product-name  text-right">
+                                                    <span class="amount">Ücretsiz Kargo</span>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="cart-product-name">
+                                                    <strong>KDV</strong>
+                                                </td>
+                                                <td class="cart-product-name  text-right">
+                                                    <span class="amount">₺@string.Format("{0:#,###.##}", Model.Cart.TotalPrice * 0.18M)</span>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="cart-product-name">
+                                                    <strong>Toplam (KDV Dahil)</strong>
+                                                </td>
+                                                <td class="cart-product-name text-right">
+                                                    <span class="amount color lead"><strong>₺@string.Format("{0:#,###.##}", Model.Cart.TotalPrice * 1.18M)</strong></span>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <h4 class="upper">Ödeme Yöntemi</h4>
+                                <table class="payment-method table table-bordered table-condensed table-responsive">
+                                    <tbody>
                                         <tr>
-
-                                            <td class="cart-product-thumbnail">
-                                                <div class="cart-product-thumbnail-name">@item.Product.Name</div>
-                                            </td>
-                                            <td class="cart-product-description">
-                                                <p>
-                                                    @item.Product.Description
-                                                    <span>(@item.Quantity Adet)</span>
-                                                </p>
-                                            </td>
-
-
-                                            <td class="cart-product-subtotal">
-                                                <span class="amount">@item.TotalPrice</span>
+                                            <td>
+                                                <div class="radio">
+                                                    <label>
+                                                        <input type="radio" name="paymentMethod" value="BankTransfer" onclick="$('#bankTransfer').show('fast');"><b class="dark">Havale/EFT</b>
+                                                        <br>
+                                                    </label>
+                                                </div>
                                             </td>
                                         </tr>
-                                    }
-                                </tbody>
-                            </table>
+                                        <tr>
+                                            <td>
+                                                <div class="radio">
+                                                    <label>
+                                                        <input type="radio" name="paymentMethod" value="CC" onclick="$('#bankTransfer').hide('fast');"><b class="dark">Kredi Kartı</b>
+                                                    </label>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <button type="submit" class="button color button-3d rounded icon-left float-right" href="#" style="color:black !important;">ÖDEMEYİ YAP VE SİPARİŞİ TAMAMLA</button>
+                            </div>
+                            <div class="col-md-6">
+                                <div id="bankTransfer" style="display:none">
+                                    <h4>
+                                        Havale/ EFT ödemesi Hesap Numaranız:
+                                    </h4>
+                                    <p>
+                                        <strong> Garanti Bankası</strong>
+                                        TR6000 2000 3000 4000 5000
+                                    </p>
+                                    <p>
+                                        Havale/EFT işleminde açıklama bilgisi #@string.Format("{0:000000}", Model.Id) Sipariş numarası yazınız.
+                                    </p>
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="table-responsive">
-                            <h4>Sipariş Toplamı</h4>
-                            <table class="table">
-                                <tbody>
-                                    <tr>
-                                        <td class="cart-product-name">
-                                            <strong>Sipariş Altoplamı</strong>
-                                        </td>
-                                        <td class="cart-product-name text-right">
-                                            <span class="amount">₺@Model.Cart.TotalPrice</span>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td class="cart-product-name">
-                                            <strong>Kargo</strong>
-                                        </td>
-                                        <td class="cart-product-name  text-right">
-                                            <span class="amount">Ücretsiz Kargo</span>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td class="cart-product-name">
-                                            <strong>KDV</strong>
-                                        </td>
-                                        <td class="cart-product-name  text-right">
-                                            <span class="amount">₺@string.Format("{0:#,###.##}", Model.Cart.TotalPrice * 0.18M)</span>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td class="cart-product-name">
-                                            <strong>Toplam (KDV Dahil)</strong>
-                                        </td>
-                                        <td class="cart-product-name text-right">
-                                            <span class="amount color lead"><strong>₺@string.Format("{0:#,###.##}", Model.Cart.TotalPrice * 1.18M)</strong></span>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <h4 class="upper">Ödeme Yöntemi</h4>
-                        <table class="payment-method table table-bordered table-condensed table-responsive">
-                            <tbody>
-                                <tr>
-                                    <td>
-                                        <div class="radio">
-                                            <label>
-                                                <input type="radio" name="optionsRadios" value="" onclick="$('#bankTransfer').show('fast');"><b class="dark">Havale/EFT</b>
-                                                <br>
-                                            </label>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <div class="radio">
-                                            <label>
-                                                <input type="radio" name="optionsRadios" value="" onclick="$('#bankTransfer').hide('fast');"><b class="dark">Kredi Kartı</b>
-                                            </label>
-                                        </div>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                        <button type="submit" class="button color button-3d rounded icon-left float-right" href="#" style="color:black !important;">ÖDEMEYİ YAP VE SİPARİŞİ TAMAMLA</button>
-                    </div>
-                    <div class="col-md-6">
-                        <div id="bankTransfer" style="display:none">
-                            <h4>
-                                Havale/ EFT ödemesi Hesap Numaranız:
-                            </h4>
-                            <p>
-                                <strong> Garanti Bankası</strong>
-                                TR6000 2000 3000 4000 5000
-                            </p>
-                            <p>
-                                Havale/EFT işleminde açıklama bilgisi #@string.Format("{0:000000}", Model.Id) Sipariş numarası yazınız.
-                            </p>
-                        </div>
+
                     </div>
                 </div>
-
-            </div>
-        </div>
     </section>
 </form>
 <!-- END: SHOP CHECKOUT -->

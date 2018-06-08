@@ -24,6 +24,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Iyzipay\Iyzipay.csproj" />
     <ProjectReference Include="..\ReflectionIT.Mvc.Paging\ReflectionIT.Mvc.Paging.csproj" />
   </ItemGroup>
 

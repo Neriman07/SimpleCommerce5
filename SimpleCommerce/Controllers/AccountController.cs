@@ -66,6 +66,10 @@ namespace SimpleCommerce.Controllers
                 var result = await _signInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, lockoutOnFailure: false);
                 if (result.Succeeded)
                 {
+                    var u = _context.Users.FirstOrDefault(s=>s.Email==model.Email);
+                    u.LastLoginTime = DateTime.Now;
+                    _context.SaveChanges();
+
                     _logger.LogInformation("User logged in.");
                     // sepet owner güncellemesi
                     var cartId = Convert.ToInt32(HttpContext.Session.GetString("CartId"));
@@ -230,7 +234,7 @@ namespace SimpleCommerce.Controllers
             ViewData["ReturnUrl"] = returnUrl;
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
+                var user = new ApplicationUser {RagistrationDate=DateTime.Now, UserName = model.Email, Email = model.Email };
                 var result = await _userManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
@@ -241,6 +245,9 @@ namespace SimpleCommerce.Controllers
                     await _emailSender.SendEmailConfirmationAsync(model.Email, callbackUrl);
 
                     await _signInManager.SignInAsync(user, isPersistent: false);
+                    user.LastLoginTime = DateTime.Now;
+                    _context.SaveChanges();
+
                     _logger.LogInformation("User created a new account with password.");
                     return RedirectToLocal(returnUrl);
                 }
